@@ -51,18 +51,18 @@ class WheelBot:
         @param in4 connects to the motor driver in4 (motor2)
         """
         assert in1 in ValidGPIO and in2 in ValidGPIO and in3 in ValidGPIO and in4 in ValidGPIO,"Invalid pin specified. Only use pins within "+str(ValidGPIO)
-        if type(trigPin)==type([]) and type(echoPin)==type([]):
+        if type(trigPin)==type([]) and type(echoPin)==type([]): #if multiple pins for multiple sensors are present
             assert len(trigPin)==len(echoPin),"Echo Pin and Trigger Pin list of pins are not equal. Place in format [trig1,trig2] and [echo1,echo2]"
             self.trigger = []
             self.echo = []
-            for i in range(len(trigPin)):
+            for i in range(len(trigPin)): #loop through and check the pins + append them
                 self.trigger.append(Pin(trigPin[i], Pin.OUT))
                 assert trigPin.count(trigPin[i])==1 and echoPin.count(echoPin[i])==1 and trigPin[i] not in echoPin and echoPin[i] not in trigd=WheelBot(trigPin=[26,24],echoPin=[24,25],in1=24,in2=23,in3=22,in4=21)Pin, "You cannot have the same pin called multiple times" 
                 self.echo.append(Pin(echoPin[i], Pin.IN))
         else: #use as default pins
             assert trigPin in ValidGPIO and echoPin in ValidGPIO, "Invalid pin specified. Only use pins within "+str(ValidGPIO)
-            self.trigger = Pin(trigPin, Pin.OUT)
-            self.echo = Pin(echoPin, Pin.IN)
+            self.trigger = [Pin(trigPin, Pin.OUT)]
+            self.echo = [Pin(echoPin, Pin.IN)]
         self.IN1 = Pin(in1, Pin.OUT)
         self.IN2 = Pin(in2, Pin.OUT)
         self.IN3 = Pin(in3, Pin.OUT)
@@ -73,18 +73,23 @@ class WheelBot:
        Get the distance from the ultrasound sensor wired to the trigger and echo pins
        if multiple sensors are entered then return array of distances
        """
-       self.trigger.low()
-       utime.sleep_us(2)
-       self.trigger.high()
-       utime.sleep_us(5)
-       self.trigger.low()
-       while self.echo.value() == 0:
-           signaloff = utime.ticks_us()
-       while self.echo.value() == 1:
-           signalon = utime.ticks_us()
-       timepassed = signalon - signaloff
-       distance = (timepassed * 0.0343) / 2
-       return distance
+       val=[]
+       for i in range(len(self.trigger)): #go through all sensors
+           trig=self.trigger[i] #get each pin value
+           echo=self.echo[i]
+           trig.low()
+           utime.sleep_us(2)
+           trig.high()
+           utime.sleep_us(5)
+           trig.low()
+           while echo.value() == 0:
+               signaloff = utime.ticks_us()
+           while echo.value() == 1:
+               signalon = utime.ticks_us()
+           timepassed = signalon - signaloff
+           distance = (timepassed * 0.0343) / 2
+           val.append(distance)
+       return val if len(val)>1 else return val[0] #return list for multiple sensors and single value for one
     def forward(self):
         """
         Move the robot forward by rotating both motors the same direction. This relies on the robot motors being wired the same way
