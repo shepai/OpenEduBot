@@ -10,6 +10,6 @@ while True:
     dist=robot.distance()
     robot.forward() #defualt move forward
     if dist<30: #turn when ruler length away from obstacle
-        robot.turn()
+        robot.right()
     robot.forward() #defualt move forward
     utime.sleep(0.5)
