@@ -57,9 +57,9 @@ class WheelBot:
             self.echo = []
             for i in range(len(trigPin)): #loop through and check the pins + append them
                 self.trigger.append(Pin(trigPin[i], Pin.OUT))
-                assert trigPin.count(trigPin[i])==1 and echoPin.count(echoPin[i])==1 and trigPin[i] not in echoPin and echoPin[i] not in trigd=WheelBot(trigPin=[26,24],echoPin=[24,25],in1=24,in2=23,in3=22,in4=21)Pin, "You cannot have the same pin called multiple times" 
+                assert trigPin.count(trigPin[i])==1 and echoPin.count(echoPin[i])==1 and trigPin[i] not in echoPin and echoPin[i] not in trigPin, "You cannot have the same pin called multiple times" 
                 self.echo.append(Pin(echoPin[i], Pin.IN))
-        else: #use as default pins
+        elif trigPin!=None and echoPin!=None: #use as default pins
             assert trigPin in ValidGPIO and echoPin in ValidGPIO, "Invalid pin specified. Only use pins within "+str(ValidGPIO)
             self.trigger = [Pin(trigPin, Pin.OUT)]
             self.echo = [Pin(echoPin, Pin.IN)]
@@ -89,7 +89,7 @@ class WheelBot:
            timepassed = signalon - signaloff
            distance = (timepassed * 0.0343) / 2
            val.append(distance)
-       return val if len(val)>1 else return val[0] #return list for multiple sensors and single value for one
+       return val if len(val)>1 else val[0] #return list for multiple sensors and single value for one
     def forward(self):
         """
         Move the robot forward by rotating both motors the same direction. This relies on the robot motors being wired the same way
@@ -106,18 +106,20 @@ class WheelBot:
         """
         Move the robot forward by rotating both motors the same direction. This relies on the robot motors being wired the same way
         """
-        self.motor1(fir=True)
-        self.motor2()
-        time.sleep(delay)
         self.stop()
+        self.motor1(fir=False)
+        self.motor2()
+        utime.sleep(delay)
+        #self.stop()
     def right(self,delay=1):
         """
         Move the robot forward by rotating both motors the same direction. This relies on the robot motors being wired the same way
         """
-        self.motor1(fir=True)
-        self.motor2()
-        time.sleep(delay)
         self.stop()
+        self.motor1()
+        self.motor2(fir=False)
+        utime.sleep(delay)
+        #self.stop()
     def motor1(self,fir=True):
         """
         Rotate the motor based on the direction
@@ -150,33 +152,11 @@ class WheelBot:
         self.IN4.value(0) 
 
 
+class lineFollower(WheelBot):
+    def __init__(self, sensePinL=1,sensePinR=1,in1=18,in2=19,in3=20,in4=21):
+        super().__init__(trigPin=None,echoPin=None,in1=18,in2=19,in3=20,in4=21)
+        
 class ServoBot:
     pass
 
 
-"""
-robot = PALbot(trigPin=26,echoPin=22,in1=18,in2=19,in3=20,in4=21)
-robot.stop()
-
-robot.stop()
-utime.sleep(1)
-robot.motor1()
-robot.motor2()
-utime.sleep(10)
-robot.stop()
-
-#while True:
-#    print(robot.distance())
-#    utime.sleep(1)
-
-while True:
-    utime.sleep(0.5)
-    dist=robot.distance()
-    
-    robot.motor1()
-    robot.motor2()
-    if dist<10:
-        robot.motor1()
-        robot.motor2(fir=False)
-        utime.sleep(1)
-"""
