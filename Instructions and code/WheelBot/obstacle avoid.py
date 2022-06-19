@@ -58,9 +58,5 @@ while True:
         print("l")
         robot.left(delay=choice([0.15,0.25]))
         robot.stop()
-
-
-
-
     utime.sleep(0.5)
 robot.stop()
