@@ -5,7 +5,7 @@ The light sensors allow close quarter sensing incase of collision.
 The sensor pins are read at 26 and 27, if the robot is not turning away from the collision,
 consider switching the pins around (26 & 27).
 
-
+Code by Dexter R Shepherd
 
 """
 
