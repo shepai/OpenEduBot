@@ -1,3 +1,11 @@
+"""
+Simple obstacle aoiding robot which turns away
+This code uses one ultrasound sensor 
+
+Code by Dexter R Shepherd
+
+"""
+
 from EduBot import WheelBot
 
 
@@ -6,7 +14,7 @@ robot.stop()
 
 
 while True:
-    
+
     dist=robot.distance()
     robot.forward() #defualt move forward
     if dist<30: #turn when ruler length away from obstacle
