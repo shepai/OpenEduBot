@@ -33,10 +33,14 @@ while True:
         robot.stop()
     elif s1==0: #just one obstacle
         print("r")
+        robot.backward()
+        utime.sleep(0.8)
         robot.right(delay=choice([0.15,0.25]))
         robot.stop()
     elif s2==0: #just one obstacle
-        print("r")
+        print("l")
+        robot.backward()
+        utime.sleep(0.8)
         robot.left(delay=choice([0.15,0.25]))
         robot.stop()
     elif (dist[0]>40 and dist[1]>40): #insignificant distance

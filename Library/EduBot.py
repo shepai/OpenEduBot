@@ -57,7 +57,7 @@ class WheelBot:
             self.echo = []
             for i in range(len(trigPin)): #loop through and check the pins + append them
                 self.trigger.append(Pin(trigPin[i], Pin.OUT))
-                assert trigPin.count(trigPin[i])==1 and echoPin.count(echoPin[i])==1 and trigPin[i] not in echoPin and echoPin[i] not in trigPin, "You cannot have the same pin called multiple times" 
+                assert trigPin.count(trigPin[i])==1 and echoPin.count(echoPin[i])==1 and trigPin[i] not in echoPin and echoPin[i] not in trigPin, "You cannot have the same pin called multiple times"
                 self.echo.append(Pin(echoPin[i], Pin.IN))
         elif trigPin!=None and echoPin!=None: #use as default pins
             assert trigPin in ValidGPIO and echoPin in ValidGPIO, "Invalid pin specified. Only use pins within "+str(ValidGPIO)
@@ -100,8 +100,8 @@ class WheelBot:
         """
         Move the robot backward by rotating both motors the same direction. This relies on the robot motors being wired the same way
         """
-        self.motor1(fir=True)
-        self.motor2(fir=True)
+        self.motor1(fir=False)
+        self.motor2(fir=False)
     def left(self,delay=1):
         """
         Move the robot forward by rotating both motors the same direction. This relies on the robot motors being wired the same way
@@ -146,17 +146,15 @@ class WheelBot:
         """
         Stop the robot by setting all signals to 0
         """
-        self.IN1.value(0) 
-        self.IN2.value(0) 
-        self.IN3.value(0)   
-        self.IN4.value(0) 
+        self.IN1.value(0)
+        self.IN2.value(0)
+        self.IN3.value(0)
+        self.IN4.value(0)
 
 
 class lineFollower(WheelBot):
     def __init__(self, sensePinL=1,sensePinR=1,in1=18,in2=19,in3=20,in4=21):
         super().__init__(trigPin=None,echoPin=None,in1=18,in2=19,in3=20,in4=21)
-        
+
 class ServoBot:
     pass
-
-
