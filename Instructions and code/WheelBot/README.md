@@ -12,8 +12,7 @@ The WheelBot chassis can be implemented using a number of different dc motor con
 
 You should be able to build a working one of these for approx £30-£50 each depending on bulk buy and how much you are willing to solder.  
 
-
-![WheelBot chassis image](https://raw.githubusercontent.com/shepai/OpenEduBot/main/Assets/wheelBot.jpg =250x250)
+<img src="https://raw.githubusercontent.com/shepai/OpenEduBot/main/Assets/wheelBot.jpg =250x250" align="left" width="48" >
 
 
 ## Building the chassis
