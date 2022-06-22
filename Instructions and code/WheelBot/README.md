@@ -18,11 +18,11 @@ You should be able to build a working one of these for approx £30-£50 each dep
 
 ## Building the chassis
 Coming soon
-###battery options
+### battery options
 
-###Cheaper
+### Cheaper
 
-###More compact and less working
+### More compact and less working
 
 
 
