@@ -13,3 +13,21 @@ You should be able to build a working one of these for approx £30-£50 each dep
 
 
 ![WheelBot chassis image](https://raw.githubusercontent.com/shepai/OpenEduBot/main/Assets/wheelBot.jpg)
+
+
+## Building the chassis
+Coming soon
+
+## Programming
+Pre-written examples can be found:
+- Example.py
+- obstacle avoid.py
+- All the files within the folder Braitenberg
+
+These files use different sensors, so make sure you have purchased the correct sensors and wired them to the specified pins for each. This is explained in the comments of each python file.
+
+The EduBot.py found in [library](https://github.com/shepai/OpenEduBot/Library) must be uploaded in the same directory as your main code on the Raspberry Pi Pico.
+
+We have used the [Thonny IDE](https://thonny.org/). Once downloaded this software allows you to connect to the Raspberry Pi Pico. Simply go to the bottom right corner of the window, and select an interpreter. We are using the Raspberry Pi Pico. Raspberry Pi have a [tutorial](https://projects.raspberrypi.org/en/projects/getting-started-with-the-pico) on getting set up with the Pico.
+
+Once all connected you can load one of our examples in and click run. The robot will run this code while the USB is attached. To make it mobile, save the example as main.py on the Pico device, and it will run on boot. 
