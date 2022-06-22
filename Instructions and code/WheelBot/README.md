@@ -8,3 +8,8 @@ The WheelBot chassis can be implemented using a number of different dc motor con
 - Ultrasound range finders (optional)
 - IR light sensors (optional)
 - Light sensitivity sensors (optional)
+
+You should be able to build a working one of these for approx £30-£50 each depending on bulk buy and how much you are willing to solder.  
+
+
+![WheelBot image](https://github.com/shepai/OpenEduBot/Assets/WheelBot.jpg)
