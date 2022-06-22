@@ -20,7 +20,9 @@ Coming soon
 ### battery options
 There are two battery options that you can take to powering your robot. The Pico uses 3.3v whereas the motor driver requires a minimum of 5V. Using 4AA batteries we can produce over 5V and make the motors operate well. However, we cannot power the Pico directly from that as we risk damaging it. The simple solution is to run two separate battery packs, one with three AAs and one with four. As long as the ground is concocted this will function.
 <img src="https://raw.githubusercontent.com/shepai/OpenEduBot/main/Assets/two batteries.png" width="50%" >
+
 The second option is more eloquent and less "clunky" which makes use of a voltage regulator. This steps down the voltage to a suable 3.3V for the Pico, and runs everything off of the same battery. We should always show caution using the same battery with robotics as motors can have a high current draw, causing the main controller to shut down/ reboot.
+
 <img src="https://raw.githubusercontent.com/shepai/OpenEduBot/main/Assets/volatageReg.png" width="50%" >
 
 ### Cheaper
