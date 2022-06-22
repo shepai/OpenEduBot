@@ -105,6 +105,7 @@ class WheelBot:
     def left(self,delay=1):
         """
         Move the robot forward by rotating both motors the same direction. This relies on the robot motors being wired the same way
+        @param delay is how long the robot will turn left for
         """
         self.stop()
         self.motor1(fir=False)
@@ -114,6 +115,7 @@ class WheelBot:
     def right(self,delay=1):
         """
         Move the robot forward by rotating both motors the same direction. This relies on the robot motors being wired the same way
+        @param delay is how long the robot will turn right for
         """
         self.stop()
         self.motor1()
