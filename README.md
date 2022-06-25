@@ -11,4 +11,6 @@ Once the library is installed on the device.
 The robots all make use of the Raspberry Pi Pico, which allows programming through Python! Python is a simple language to learn for those starting to learn code.
 
 ### WheelBot
-Wheelbot uses
+Wheelbot uses two DC motors and a ball caster at the front. This robot uses a simple design, but can exhibit some intelligent behaviour. Whether you want to use ultrasound sensors to make robot vacum-cleaner algorithms, or light following bots - your imagination (and the use of wheels) is your limit. 
+
+<img src="https://raw.githubusercontent.com/shepai/OpenEduBot/main/Assets/wheelBot.jpg" width="50%" >
