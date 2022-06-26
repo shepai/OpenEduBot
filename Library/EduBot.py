@@ -160,3 +160,117 @@ class lineFollower(WheelBot):
 
 class ServoBot:
     pass
+
+class wheelBot_2:
+    """
+    Requires:
+    2 DC motors
+    Pico Robotics board
+    Raspberry Pi Pico
+    Battery packs
+        4xAA
+    Light sensitivity sensors (optional)
+    
+    The I2C communication part of the code was taken from the KitronikPicoRobotics library
+    which was used within our own library function to make the control easier for all ages
+    """
+
+    #Class variables - these should be the same for all instances of the class.
+    # If you wanted to write some code that stepped through
+    # the servos or motors then this is the Base and size to do that
+    SRV_REG_BASE = 0x08
+    MOT_REG_BASE = 0x28
+    REG_OFFSET = 4
+
+    #to perform a software reset on the PCA chip.
+    #Separate from the init function so we can reset at any point if required - useful for development...
+    def swReset(self):
+        self.i2c.writeto(0,"\x06")
+
+    #setup the PCA chip for 50Hz and zero out registers.
+    def initPCA(self):
+        self.swReset() #make sure we are in a known position
+        #setup the prescale to have 20mS pulse repetition - this is dictated by the servos.
+        self.i2c.writeto_mem(108,0xfe,"\x78")
+        #block write outputs to off
+        self.i2c.writeto_mem(108,0xfa,"\x00")
+        self.i2c.writeto_mem(108,0xfb,"\x00")
+        self.i2c.writeto_mem(108,0xfc,"\x00")
+        self.i2c.writeto_mem(108,0xfd,"\x00")
+        #come out of sleep
+        self.i2c.writeto_mem(108,0x00,"\x01")    
+
+    def setPrescaleReg(self):
+        i2c.writeto_mem(108,0xfe,"\x78")
+    #Driving the motor is simpler than the servo - just convert 0-100% to 0-4095 and push it to the correct registers.
+    #each motor has 4 writes - low and high bytes for a pair of registers. 
+    def motorOn(self,motor, direction, speed):
+        #cap speed to 0-100%
+        if (speed<0):
+            speed = 0
+        elif (speed>100):
+            speed=100
+            
+        motorReg = self.MOT_REG_BASE + (2 * (motor - 1) * self.REG_OFFSET)
+        PWMVal = int(speed * 40.95)
+        lowByte = PWMVal & 0xFF
+        highByte = (PWMVal>>8) & 0xFF #motors can use all 0-4096
+        #print (motor, direction, "LB ",lowByte," HB ",highByte)
+        if direction == "f":
+            self.i2c.writeto_mem(self.CHIP_ADDRESS, motorReg,bytes([lowByte]))
+            self.i2c.writeto_mem(self.CHIP_ADDRESS, motorReg+1,bytes([highByte]))
+            self.i2c.writeto_mem(self.CHIP_ADDRESS, motorReg+4,bytes([0]))
+            self.i2c.writeto_mem(self.CHIP_ADDRESS, motorReg+5,bytes([0]))
+        elif direction == "r":
+            self.i2c.writeto_mem(self.CHIP_ADDRESS, motorReg+4,bytes([lowByte]))
+            self.i2c.writeto_mem(self.CHIP_ADDRESS, motorReg+5,bytes([highByte]))
+            self.i2c.writeto_mem(self.CHIP_ADDRESS, motorReg,bytes([0]))
+            self.i2c.writeto_mem(self.CHIP_ADDRESS, motorReg+1,bytes([0]))
+        else:
+            self.i2c.writeto_mem(self.CHIP_ADDRESS, motorReg+4,bytes([0]))
+            self.i2c.writeto_mem(self.CHIP_ADDRESS, motorReg+5,bytes([0]))
+            self.i2c.writeto_mem(self.CHIP_ADDRESS, motorReg,bytes([0]))
+            self.i2c.writeto_mem(self.CHIP_ADDRESS, motorReg+1,bytes([0]))
+            raise Exception("INVALID DIRECTION")
+    #To turn off set the speed to 0...
+    def motorOff(self,motor):
+        self.motorOn(motor,"f",0)
+    def forward(self,speed):
+        """
+        Move the robot forward by rotating both motors the same direction. This relies on the robot motors being wired the same way
+        @param speed is the speed that the robot will move at
+        """
+        self.motorOn(4, "f", speed)
+        self.motorOn(3, "f", speed)
+    def backward(self):
+        """
+        Move the robot backward by rotating both motors the same direction. This relies on the robot motors being wired the same way
+        """
+        self.motorOn(4, "r", speed)
+        self.motorOn(3, "r", speed)
+    def left(self,speed=30,delay=1):
+        """
+        Move the robot forward by rotating both motors the same direction. This relies on the robot motors being wired the same way
+        @param delay is how long the robot will turn left for
+        """
+        self.motorOff()
+        self.motorOn(4, "f", speed)
+        self.motorOn(3, "r", speed)
+        utime.sleep(delay)
+        #self.stop()
+    def right(self,speed=30,delay=1):
+        """
+        Move the robot forward by rotating both motors the same direction. This relies on the robot motors being wired the same way
+        @param delay is how long the robot will turn right for
+        """
+        self.motorOff()
+        self.motorOn(4, "r", speed)
+        self.motorOn(3, "f", speed)
+        utime.sleep(delay)
+        #self.stop()
+    
+    def stop(self):
+        """
+        Stop the robot by setting all signals to 0
+        """
+        self.motorOff()
