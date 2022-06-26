@@ -248,7 +248,7 @@ class wheelBot_2:
         """
         self.motorOn(4, "f", speed)
         self.motorOn(3, "f", speed)
-    def backward(self):
+    def backward(self,speed):
         """
         Move the robot backward by rotating both motors the same direction. This relies on the robot motors being wired the same way
         """
