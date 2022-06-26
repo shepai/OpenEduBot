@@ -257,9 +257,11 @@ class wheelBot_2:
     def left(self,speed=30,delay=1):
         """
         Move the robot forward by rotating both motors the same direction. This relies on the robot motors being wired the same way
+        @param speed is how quickly it rotates
         @param delay is how long the robot will turn left for
         """
-        self.motorOff()
+        self.motorOff(4)
+        self.motorOff(3)
         self.motorOn(4, "f", speed)
         self.motorOn(3, "r", speed)
         utime.sleep(delay)
@@ -267,9 +269,11 @@ class wheelBot_2:
     def right(self,speed=30,delay=1):
         """
         Move the robot forward by rotating both motors the same direction. This relies on the robot motors being wired the same way
+        @param speed is how quickly it rotates
         @param delay is how long the robot will turn right for
         """
-        self.motorOff()
+        self.motorOff(4)
+        self.motorOff(3)
         self.motorOn(4, "r", speed)
         self.motorOn(3, "f", speed)
         utime.sleep(delay)
@@ -279,4 +283,7 @@ class wheelBot_2:
         """
         Stop the robot by setting all signals to 0
         """
-        self.motorOff()
+        self.motorOff(4)
+        self.motorOff(3)
+
+
