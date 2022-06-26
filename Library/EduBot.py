@@ -17,6 +17,7 @@ This code is open source, therefore free to distribute or modify. We only ask to
 """
 #import standard needed libraries
 from machine import Pin
+import machine
 import utime
 #import servo libraries
 try:
@@ -181,7 +182,12 @@ class wheelBot_2:
     SRV_REG_BASE = 0x08
     MOT_REG_BASE = 0x28
     REG_OFFSET = 4
-
+    def __init__(self, I2CAddress=108,sda=8,scl=9):
+        self.CHIP_ADDRESS = 108
+        sda=machine.Pin(sda)
+        scl=machine.Pin(scl)
+        self.i2c=machine.I2C(0,sda=sda, scl=scl, freq=100000)
+        self.initPCA()
     #to perform a software reset on the PCA chip.
     #Separate from the init function so we can reset at any point if required - useful for development...
     def swReset(self):
