@@ -15,6 +15,7 @@ You should be able to build a working one of these for approx £30-£50 each dep
 
 ## Building the chassis
 Firstly you will need to get the following parts. These parts can be found in the excel spreadsheet "costs.xlsx". It approximately costs £50 a robot. The more you build, the cheaper they become.
+
 <img src="https://raw.githubusercontent.com/shepai/OpenEduBot/main/Assets/partList.PNG" width="50%" >
 
 ### Step 1
