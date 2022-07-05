@@ -8,13 +8,24 @@ The WheelBot2 chassis can be implemented using a number of different dc motor co
 - Light sensitivity sensors (optional)
 - AA batteries 4
 
-You should be able to build a working one of these for approx £30-£50 each depending on bulk buy and how much you are willing to solder. This robot is very similar to the WheelBot robot, but with one key difference - which is the robotic hat. This hat is more expensive than using a motor driver but much more compact for the chassis. Additionally, it has an inbuilt oltage regulator so both the pico and hat can be powererd from one battery holder. 
+You should be able to build a working one of these for approx £30-£50 each depending on bulk buy and how much you are willing to solder. This robot is very similar to the WheelBot robot, but with one key difference - which is the robotic hat. This hat is more expensive than using a motor driver but much more compact for the chassis. Additionally, it has an inbuilt oltage regulator so both the pico and hat can be powererd from one battery holder.
 
 <img src="https://raw.githubusercontent.com/shepai/OpenEduBot/main/Assets/wheelBot2.jpg" width="50%" >
 
 
 ## Building the chassis
-Coming soon
+
+<img src="https://raw.githubusercontent.com/shepai/OpenEduBot/main/Assets/partList.PNG" width="50%" >
+
+
+<img src="https://raw.githubusercontent.com/shepai/OpenEduBot/main/Assets/step1.PNG" width="50%" >
+
+
+<img src="https://raw.githubusercontent.com/shepai/OpenEduBot/main/Assets/step2.PNG" width="50%" >
+
+
+<img src="https://raw.githubusercontent.com/shepai/OpenEduBot/main/Assets/step3.PNG" width="50%" >
+
 
 ## Programming
 Pre-written examples can be found:

@@ -26,11 +26,6 @@ The second option is more eloquent and less "clunky" which makes use of a voltag
 
 <img src="https://raw.githubusercontent.com/shepai/OpenEduBot/main/Assets/volatageReg.png" width="75%" >
 
-### Cheaper
-
-### More compact and less working
-
-
 
 ## Programming
 Pre-written examples can be found:
