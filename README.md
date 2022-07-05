@@ -13,4 +13,7 @@ The robots all make use of the Raspberry Pi Pico, which allows programming throu
 ### WheelBot
 Wheelbot uses two DC motors and a ball caster at the front. This robot uses a simple design, but can exhibit some intelligent behaviour. Whether you want to use ultrasound sensors to make robot vacum-cleaner algorithms, or light following bots - your imagination (and the use of wheels) is your limit. 
 
-<img src="https://raw.githubusercontent.com/shepai/OpenEduBot/main/Assets/wheelBot.jpg" width="50%" >
+<img src="https://raw.githubusercontent.com/shepai/OpenEduBot/main/Assets/wheelBot.jpg" width="25%" >
+<img src="https://raw.githubusercontent.com/shepai/OpenEduBot/main/Assets/291091183_407439234666715_8003499927750599944_n.jpg" width="25%" >
+
+
