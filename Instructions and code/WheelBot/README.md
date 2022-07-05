@@ -16,7 +16,7 @@ You should be able to build a working one of these for approx £30-£50 each dep
 
 
 ## Building the chassis
-Coming soon
+
 ### battery options
 There are two battery options that you can take to powering your robot. The Pico uses 3.3v whereas the motor driver requires a minimum of 5V. Using 4AA batteries we can produce over 5V and make the motors operate well. However, we cannot power the Pico directly from that as we risk damaging it. The simple solution is to run two separate battery packs, one with three AAs and one with four. As long as the ground is concocted this will function.
 
