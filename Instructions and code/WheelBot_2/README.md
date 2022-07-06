@@ -33,6 +33,36 @@ It is ideal to have the batteries on the top, so they can be easily changed with
 
 
 ## Programming
+
+The physical robot makes use of sensors and two motors. We can attach a USB to it and upload the code.
+
+## Using a different IDE
+Using a specific IDEs can be simpler for using MicroPython. [Thonny IDE](https://thonny.org/) is a simple IDE for uploading programs to the Raspberry Pi Pico. Once you have set up the IDE we can start [programming the board](https://projects.raspberrypi.org/en/projects/getting-started-with-the-pico).
+
+### Step 1
+Download the robot control library from [Github](https://raw.githubusercontent.com/shepai/OpenEduBot/main/Library/EduBot.py) and have handy in a folder.
+
+### Step 2
+You will need to connect the robot to your device via USB. Make sure you have Thonny IDE up. In the bottom right corner you should be able to select the interpreter for the IDE. We want Raspberry Pi Pico MicroPython.
+
+<img src="https://projects-static.raspberrypi.org/projects/getting-started-with-the-pico/725a421f3b51a5674c539d6953db5f1892509475/en/images/thonny-micropython-pico-menu.png" width="35%" >
+
+The software will ask you to install firmware for the Pico. Install it.
+
+<img src="https://projects-static.raspberrypi.org/projects/getting-started-with-the-pico/725a421f3b51a5674c539d6953db5f1892509475/en/images/thonny-install-micropython-pico.png" width="35%" >
+
+The shell should then show it is connected to the Pico. Try entering the following in the shell:
+
+```
+print("Hello, world!")
+```
+
+This code is compiling on the Pico board. Any code they you write and run will now be uploading to the device.
+
+
+### Step 3
+Open the downloaded EduBot.py in the Thonny IDE, and then go to File>Save As and a prompt will come up asking whether to install on the device or computer. Resave the file on the device with the same name. We do this so we can control the chassis hardware.
+
 Pre-written examples can be found:
 - Example.py
 
