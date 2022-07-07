@@ -17,6 +17,10 @@ You should be able to build a working one of these for approx £30-£50 each dep
 Firstly you will need to get the following parts. These parts can be found in the excel spreadsheet "costs.xlsx". It approximately costs £50 a robot. The more you build, the cheaper they become.
 
 <img src="https://raw.githubusercontent.com/shepai/OpenEduBot/main/Assets/partList.PNG" width="50%" >
+### Wiring
+The wiring of the motors and battery needs to be in motors 3 and 4 for the library to be compatible. You may want to strip the ends of the wires off on the motors if it cannot be directly screwed into the robotics board.
+The sensor inputs can be changed to any analogue pin, if you wish to add more then they can be used.
+<img src="https://raw.githubusercontent.com/shepai/OpenEduBot/main/Assets/wiring.PNG" width="50%" >
 
 ### Step 1
 Mount both of the motors on the chassis, using the side plates within the two rectangular slots on the chassis will keep the motors in place. This is the point that you can mount your chosen sensors for the lower level. If you are working with light sensors, this level is ideal.
