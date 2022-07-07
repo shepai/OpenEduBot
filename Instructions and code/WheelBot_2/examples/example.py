@@ -1,3 +1,10 @@
+"""
+Robot code for going forward, urning and going backwards. 
+
+Code by Dexter R Shepherd
+
+"""
+
 from EduBot import wheelBot_2
 import utime
 
