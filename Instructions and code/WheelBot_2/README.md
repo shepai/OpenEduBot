@@ -19,8 +19,10 @@ Firstly you will need to get the following parts. These parts can be found in th
 <img src="https://raw.githubusercontent.com/shepai/OpenEduBot/main/Assets/partList.PNG" width="50%" >
 
 ### Wiring
+
 The wiring of the motors and battery needs to be in motors 3 and 4 for the library to be compatible. You may want to strip the ends of the wires off on the motors if it cannot be directly screwed into the robotics board.
 The sensor inputs can be changed to any analogue pin, if you wish to add more then they can be used.
+
 <img src="https://raw.githubusercontent.com/shepai/OpenEduBot/main/Assets/wiring.PNG" width="50%" >
 
 ### Step 1
