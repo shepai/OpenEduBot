@@ -11,3 +11,6 @@ Wheelbot is a robot that uses... wheels and a ball caster. It is  great for line
 Wheelbot 2 is an updated version of wheelbot, to use a better, more compact circuit. This robot can also be cheaper than the wheelbot. This method requires little circuit building compared to wheelbot, making it quicker to build and deploy for any audience.
 
 <img src="https://raw.githubusercontent.com/shepai/OpenEduBot/main/Assets/291091183_407439234666715_8003499927750599944_n.jpg" width="25%" >
+
+## ServoBot
+Servo bot is in development, and will allow you to control two wheels via continuous rotation servos. 
