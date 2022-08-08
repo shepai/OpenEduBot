@@ -172,9 +172,6 @@ class lineFollower(WheelBot):
     def __init__(self, sensePinL=1,sensePinR=1,in1=18,in2=19,in3=20,in4=21):
         super().__init__(trigPin=None,echoPin=None,in1=18,in2=19,in3=20,in4=21)
 
-class ServoBot:
-    pass
-
 class wheelBot_2:
     """
     Requires:
@@ -184,7 +181,7 @@ class wheelBot_2:
     Battery packs
         4xAA
     Light sensitivity sensors (optional)
-    
+
     The I2C communication part of the code was taken from the KitronikPicoRobotics library
     which was used within our own library function to make the control easier for all ages
     """
@@ -217,19 +214,19 @@ class wheelBot_2:
         self.i2c.writeto_mem(108,0xfc,"\x00")
         self.i2c.writeto_mem(108,0xfd,"\x00")
         #come out of sleep
-        self.i2c.writeto_mem(108,0x00,"\x01")    
+        self.i2c.writeto_mem(108,0x00,"\x01")
 
     def setPrescaleReg(self):
         i2c.writeto_mem(108,0xfe,"\x78")
     #Driving the motor is simpler than the servo - just convert 0-100% to 0-4095 and push it to the correct registers.
-    #each motor has 4 writes - low and high bytes for a pair of registers. 
+    #each motor has 4 writes - low and high bytes for a pair of registers.
     def motorOn(self,motor, direction, speed):
         #cap speed to 0-100%
         if (speed<0):
             speed = 0
         elif (speed>100):
             speed=100
-            
+
         motorReg = self.MOT_REG_BASE + (2 * (motor - 1) * self.REG_OFFSET)
         PWMVal = int(speed * 40.95)
         lowByte = PWMVal & 0xFF
@@ -291,7 +288,7 @@ class wheelBot_2:
         self.motorOn(3, "f", speed)
         utime.sleep(delay)
         #self.stop()
-    
+
     def stop(self):
         """
         Stop the robot by setting all signals to 0
@@ -350,4 +347,3 @@ class servoBot:
         highByte = (PWMVal>>8)&0x01 #cap high byte at 1 - shoud never be more than 2.5mS.
         self.i2c.writeto_mem(self.CHIP_ADDRESS, calcServo,bytes([lowByte]))
         self.i2c.writeto_mem(self.CHIP_ADDRESS, calcServo+1,bytes([highByte]))
-
