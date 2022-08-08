@@ -40,7 +40,7 @@ class WheelBot:
     Ultrasound range sensor
     Breadboard (for ease)
     """
-    def __init__(self,trigPin=26,echoPin=22,in1=18,in2=19,in3=20,in4=21):
+    def __init__(self,**kwargs):
         """
         Creates a wheel chassis bot for two DC motors using a motor driver and ultrasound sensor
         with given pins that the chassis can use connected to the Pico. Al must be GPIO pins
@@ -51,7 +51,20 @@ class WheelBot:
         @param in3 connects to the motor driver in3 (motor2)
         @param in4 connects to the motor driver in4 (motor2)
         """
-        assert in1 in ValidGPIO and in2 in ValidGPIO and in3 in ValidGPIO and in4 in ValidGPIO,"Invalid pin specified. Only use pins within "+str(ValidGPIO)
+        pins={}
+        #set default values for pins
+        pins['trigPin']=26
+        pins['echoPin']=22
+        pins['in1']=18
+        pins['in2']=19
+        pins['in3']=20
+        pins['in4']=21
+        for key, value in kwargs.items(): #gather all the values
+            pins[key]=value
+        print("{0} = {1}".format(key, value))
+        assert pins['in1'] in ValidGPIO and pins['in2'] in ValidGPIO and pins['in3'] in ValidGPIO and pins['in4'] in ValidGPIO,"Invalid pin specified. Only use pins within "+str(ValidGPIO)
+        trigPin=pins['trigPin']
+        echoPin=pins['echoPin']
         if type(trigPin)==type([]) and type(echoPin)==type([]): #if multiple pins for multiple sensors are present
             assert len(trigPin)==len(echoPin),"Echo Pin and Trigger Pin list of pins are not equal. Place in format [trig1,trig2] and [echo1,echo2]"
             self.trigger = []
@@ -64,10 +77,10 @@ class WheelBot:
             assert trigPin in ValidGPIO and echoPin in ValidGPIO, "Invalid pin specified. Only use pins within "+str(ValidGPIO)
             self.trigger = [Pin(trigPin, Pin.OUT)]
             self.echo = [Pin(echoPin, Pin.IN)]
-        self.IN1 = Pin(in1, Pin.OUT)
-        self.IN2 = Pin(in2, Pin.OUT)
-        self.IN3 = Pin(in3, Pin.OUT)
-        self.IN4 = Pin(in4, Pin.OUT)
+        self.IN1 = Pin(pins['in1'], Pin.OUT)
+        self.IN2 = Pin(pins['in2'], Pin.OUT)
+        self.IN3 = Pin(pins['in3'], Pin.OUT)
+        self.IN4 = Pin(pins['in4'], Pin.OUT)
 
     def distance(self):
        """
