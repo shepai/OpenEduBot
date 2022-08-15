@@ -8,7 +8,7 @@ The WheelBot2 chassis can be implemented using a number of different dc motor co
 - Light sensitivity sensors (optional)
 - AA batteries 4
 
-<img src="https://raw.githubusercontent.com/shepai/OpenEduBot/main/Assets/Robot.jpg" width="50%" >
+<img src="https://raw.githubusercontent.com/shepai/OpenEduBot/main/Assets/Robot.jpeg" width="50%" >
 
 ## Building the chassis
 Firstly you will need to get the following parts. These parts can be found in the excel spreadsheet "costs.xlsx". It approximately costs £50 a robot. The more you build, the cheaper they become.
