@@ -31,6 +31,7 @@ def showPins(val):
     ind=int(len(LEDS)*val)
     for i in range(ind):
         LEDS[i].value=True
+        
 def get_voltage(pin):
     return max(min(1-((pin.value * 3.3) / 65536),1),0)
 
