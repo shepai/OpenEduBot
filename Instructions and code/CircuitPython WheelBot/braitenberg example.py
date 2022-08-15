@@ -12,11 +12,11 @@ s2 = AnalogIn(board.GP26)
 
 bot=wheelBot_2()
 
-def get_voltage(pin):
-    return (pin.value * 3.3) / 65536
+def get_intensity(pin):
+    return max(min(1-((pin.value * 3.3) / 65536),1),0)
 
 while True:
-    r1,r2=(get_voltage(s1),get_voltage(s2))
+    r1,r2=(get_intensity(s1)*10,get_intensity(s2)*10)
     
     if int(r1)>int(r2):
         bot.left()
