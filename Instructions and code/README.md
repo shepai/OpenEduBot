@@ -22,5 +22,5 @@ Servo bot is in development, and will allow you to control two wheels via contin
 CircuitPython is an alternative to MicroPython that some devices use. Using EduBot_CP.py you can have access to CircuitPython variants of the chassis. These will have separate instructions.
 
 ## [WheelBot](https://github.com/shepai/OpenEduBot/tree/main/Instructions%20and%20code/CircuitPython%20WheelBot)
-This is a CircuitPython variant for the wheelbot.  
+This is a CircuitPython variant for the wheelbot. This has a braitenberg example for light following behaviours. 
 <img src="https://raw.githubusercontent.com/shepai/OpenEduBot/main/Assets/Robot.jpeg" width="50%" >
