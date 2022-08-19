@@ -11,8 +11,15 @@ import utime
 
 a=servoBot(1,2)
 
+#go forward
 a.servoWrite(1,40)
 a.servoWrite(2,140)
+
+utime.sleep(1)
+
+a.servoWrite(1,0)
+a.servoWrite(2,0)
+
 """
 for i in range(10):
     a.servoWrite(1,0)

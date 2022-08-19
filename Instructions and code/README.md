@@ -17,8 +17,7 @@ Wheelbot 2 is an updated version of wheelbot, to use a better, more compact circ
 <img src="https://raw.githubusercontent.com/shepai/OpenEduBot/main/Assets/291091183_407439234666715_8003499927750599944_n.jpg" width="25%" >
 
 ### ServoBot
-Servo bot is in development, and will allow you to control two wheels via continuous rotation servos.
-
+Servo bot is in development, and will allow you to control two wheels via continuous rotation servos. Continuous rotation servos typically have a threshold screwjoint, if you find that your motors are rotating when you have not made them it is likely you will need to turn the threshold till they stop moving. Be aware that the equilibrium can only be set when the motors have been issued a stop command and are still rotating.
 
 
 ## CircuitPython
@@ -27,7 +26,7 @@ CircuitPython is an alternative to MicroPython that some devices use. Using EduB
 
 ### [WheelBot](https://github.com/shepai/OpenEduBot/tree/main/Instructions%20and%20code/CircuitPython%20WheelBot)
 This is a CircuitPython variant for the wheelbot. This has a braitenberg example for light following behaviours.
-<img src="https://raw.githubusercontent.com/shepai/OpenEduBot/main/Assets/Robot.jpeg" width="50%" >
+<img src="https://raw.githubusercontent.com/shepai/OpenEduBot/main/Assets/Robot.jpeg" width="25%" >
 
 ## Controlling sensors
 The different example codes come with their own sensor control. This section explains how you can use different sensors an interface with them.
