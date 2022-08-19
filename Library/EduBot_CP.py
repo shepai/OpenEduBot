@@ -58,7 +58,7 @@ class wheelBot_2:
         """
         self.stop()
         self.motor1.throttle = 1*(speed/100)  
-        self.motor1.throttle = 1*(speed/100)
+        self.motor2.throttle = 1*(speed/100)
         time.sleep(delay)
     def right(self,speed=50,delay=0.5):
         """
@@ -68,11 +68,14 @@ class wheelBot_2:
         """
         self.stop()
         self.motor1.throttle = -1*(speed/100)  
-        self.motor1.throttle = -1*(speed/100)
+        self.motor2.throttle = -1*(speed/100)
         time.sleep(delay)
     def backward(self,speed):
         self.motor1.throttle = 1*(speed/100) 
         self.motor2.throttle = -1*(speed/100)
-        
+    def motor1_move(self,speed):
+        self.motor1.throttle = 1*(speed/100)
+    def motor2_move(self,speed):
+        self.motor2.throttle = 1*(speed/100) 
         
 
