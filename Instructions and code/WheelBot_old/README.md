@@ -1,42 +1,30 @@
 # WheelBot
-The WheelBot2 chassis can be implemented using a number of different dc motor controlled chassis. The one we have used was purchased from the [Pi Hut](https://thepihut.com/products/adafruit-mini-3-layer-round-robot-chassis-kit-2wd-with-dc-motors). For electronics it required the following items:
+The WheelBot chassis can be implemented using a number of different dc motor controlled chassis. The one we have used was purchased from the [Pi Hut](https://thepihut.com/products/adafruit-mini-3-layer-round-robot-chassis-kit-2wd-with-dc-motors). For electronics it required the following items:
 - Raspberry Pi Pico
-- [Robotics Hat](https://thepihut.com/products/robotics-board-for-raspberry-pi-pico)
+- Motor driver (L298N)
+- A selection of jumper wires
 - One 4xAA battery holder
+- One 3xAA battery holder or some form of [voltage regulator](https://thepihut.com/products/dc-dc-automatic-step-up-down-power-module-2-5-15v-to-3-3v-600ma)
 - Ultrasound range finders (optional)
 - IR light sensors (optional)
 - Light sensitivity sensors (optional)
-- AA batteries 4
+- AA batteries (between 4-6 depending on your battery option)
 
-You should be able to build a working one of these for approx £30-£50 each depending on bulk buy and how much you are willing to solder. This robot is very similar to the WheelBot robot, but with one key difference - which is the robotic hat. This hat is more expensive than using a motor driver but much more compact for the chassis. Additionally, it has an inbuilt oltage regulator so both the pico and hat can be powererd from one battery holder.
+You should be able to build a working one of these for approx £30-£50 each depending on bulk buy and how much you are willing to solder.  
 
-<img src="https://raw.githubusercontent.com/shepai/OpenEduBot/main/Assets/wheelBot2.jpg" width="50%" >
+<img src="https://raw.githubusercontent.com/shepai/OpenEduBot/main/Assets/wheelBot.jpg" width="50%" >
 
 
 ## Building the chassis
-Firstly you will need to get the following parts. These parts can be found in the excel spreadsheet "costs.xlsx". It approximately costs £50 a robot. The more you build, the cheaper they become.
 
-<img src="https://raw.githubusercontent.com/shepai/OpenEduBot/main/Assets/partList.PNG" width="50%" >
+### battery options
+There are two battery options that you can take to powering your robot. The Pico uses 3.3v whereas the motor driver requires a minimum of 5V. Using 4AA batteries we can produce over 5V and make the motors operate well. However, we cannot power the Pico directly from that as we risk damaging it. The simple solution is to run two separate battery packs, one with three AAs and one with four. As long as the ground is concocted this will function.
 
-### Wiring
+<img src="https://raw.githubusercontent.com/shepai/OpenEduBot/main/Assets/two batteries.png" width="75%" >
 
-The wiring of the motors and battery needs to be in motors 3 and 4 for the library to be compatible. You may want to strip the ends of the wires off on the motors if it cannot be directly screwed into the robotics board.
-The sensor inputs can be changed to any analogue pin, if you wish to add more then they can be used.
+The second option is more eloquent and less "clunky" which makes use of a voltage regulator. This steps down the voltage to a suable 3.3V for the Pico, and runs everything off of the same battery. We should always show caution using the same battery with robotics as motors can have a high current draw, causing the main controller to shut down/ reboot.
 
-<img src="https://raw.githubusercontent.com/shepai/OpenEduBot/main/Assets/wiring.PNG" width="50%" >
-
-### Step 1
-Mount both of the motors on the chassis, using the side plates within the two rectangular slots on the chassis will keep the motors in place. This is the point that you can mount your chosen sensors for the lower level. If you are working with light sensors, this level is ideal.
-
-<img src="https://raw.githubusercontent.com/shepai/OpenEduBot/main/Assets/step1.PNG" width="50%" >
-
-### Step 2
-Mount the main controller, make sure you have soldered some L-shaped pins underneath the Robotics board if you wish to use GPIO pins to interface with sensors. If you are using more HATs than just the robotics board, you may want to consider using Step 3 as your second layer.
-<img src="https://raw.githubusercontent.com/shepai/OpenEduBot/main/Assets/step2.PNG" width="50%" >
-
-### Step 3
-It is ideal to have the batteries on the top, so they can be easily changed without having to unscrew the chassis.
-<img src="https://raw.githubusercontent.com/shepai/OpenEduBot/main/Assets/step3.PNG" width="50%" >
+<img src="https://raw.githubusercontent.com/shepai/OpenEduBot/main/Assets/volatageReg.png" width="75%" >
 
 
 ## Programming
@@ -70,8 +58,13 @@ This code is compiling on the Pico board. Any code they you write and run will n
 ### Step 3
 Open the downloaded EduBot.py in the Thonny IDE, and then go to File>Save As and a prompt will come up asking whether to install on the device or computer. Resave the file on the device with the same name. We do this so we can control the chassis hardware.
 
+
 Pre-written examples can be found:
 - Example.py
+- obstacle avoid.py
+- All the files within the folder Braitenberg
+
+These files use different sensors, so make sure you have purchased the correct sensors and wired them to the specified pins for each. This is explained in the comments of each python file.
 
 The EduBot.py found in [library](https://github.com/shepai/OpenEduBot/Library) must be uploaded in the same directory as your main code on the Raspberry Pi Pico.
 

@@ -11,12 +11,12 @@ Code by Dexter R Shepherd
 
 """
 
-from EduBot import WheelBot
+from EduBot import Old_WheelBot
 import utime
 from machine import Pin,ADC
 from random import choice
 
-robot = WheelBot(trigPin=[12,5],echoPin=[15,4],in1=11,in2=10,in3=9,in4=8) #wheel bot chassis pins
+robot = Old_WheelBot(trigPin=[12,5],echoPin=[15,4],in1=11,in2=10,in3=9,in4=8) #wheel bot chassis pins
 robot.stop()
 
 #take pins as analog as to get a varied reading
@@ -46,9 +46,7 @@ while True:
         print("l")
         robot.left(delay=0.05)
         robot.stop()
-    
-    
+
+
     utime.sleep(0.5)
 robot.stop()
-
-

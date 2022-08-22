@@ -7,13 +7,13 @@ For both the wheelbot_2 chassis variants, the Raspberry Pi Pico Robotics board h
 ## MicroPython
 MicroPython is the default on the Raspberry Pi Pico. The Raspberry Pi Pico can be converted to use CircuitPython, and vice versa. Our library supports both the PiMaker board and the pico on the CircuitPython variant.
 
-### [WheelBot](https://github.com/shepai/OpenEduBot/tree/main/Instructions%20and%20code/WheelBot)
+### [WheelBot for motor driver](https://github.com/shepai/OpenEduBot/tree/main/Instructions%20and%20code/WheelBot_Old)
 Wheelbot is a robot that uses... wheels and a ball caster. It is  great for line following, obstacle avoiding, and light following tasks. This small cheap chassis can allow cheap robotics teaching in schools. This makes use of motor drivers and breadboards, allowing you to build your own circuits. This robot is better for teaching electronic tasks, and good for audience who require longer.
 
 <img src="https://raw.githubusercontent.com/shepai/OpenEduBot/main/Assets/wheelBot.jpg" width="25%" >
 
-### [WheelBot2](https://github.com/shepai/OpenEduBot/tree/main/Instructions%20and%20code/WheelBot_2)
-Wheelbot 2 is an updated version of wheelbot, to use a better, more compact circuit. This robot can also be cheaper than the wheelbot. This method requires little circuit building compared to wheelbot, making it quicker to build and deploy for any audience.
+### [WheelBot](https://github.com/shepai/OpenEduBot/tree/main/Instructions%20and%20code/WheelBot)
+Wheelbot is an updated version of the older wheelbot that uses motor drivers, to use a better, more compact circuit. This robot can also be cheaper than the older wheelbot. This method requires little circuit building compared to wheelbot, making it quicker to build and deploy for any audience.
 
 <img src="https://raw.githubusercontent.com/shepai/OpenEduBot/main/Assets/291091183_407439234666715_8003499927750599944_n.jpg" width="25%" >
 

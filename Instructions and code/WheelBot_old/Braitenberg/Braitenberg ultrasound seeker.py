@@ -3,17 +3,17 @@ Braitenbergs are simple agents that exhibit seeking behaviour.
 This code uses the ultrasound sensor to run towards from obstacles.
 
 If the robot is not moving towards the target, consider changing the ">" and "<"
-symbols in lines 31 and 28 to be the opposite way round to go left and right. 
+symbols in lines 31 and 28 to be the opposite way round to go left and right.
 
 Code by Dexter R Shepherd
 
 """
 
 
-from EduBot import WheelBot
+from EduBot import Old_WheelBot
 import utime
 
-robot = WheelBot(trigPin=[12,5],echoPin=[15,4],in1=11,in2=10,in3=9,in4=8)
+robot = Old_WheelBot(trigPin=[12,5],echoPin=[15,4],in1=11,in2=10,in3=9,in4=8)
 robot.stop()
 
 

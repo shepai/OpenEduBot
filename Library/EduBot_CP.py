@@ -22,7 +22,7 @@ import time
 import pwmio
 from adafruit_motor import servo, motor
 
-class wheelBot_2:
+class wheelBot:
     SRV_REG_BASE = 0x08
     MOT_REG_BASE = 0x28
     REG_OFFSET = 4
@@ -42,7 +42,7 @@ class wheelBot_2:
         buf[0] = 0x00
         buf[1] = 0x01
         self.i2c.writeto(self.CHIP_ADDRESS, buf)
-        
+
     def __init__(self,m1a=board.GP8,m1b=board.GP9,m2a=board.GP10,m2b=board.GP11,board_type="default"):
         """
         Initialize the wheel bot and the pins going to the motor driver
@@ -53,7 +53,7 @@ class wheelBot_2:
         """
         self.board_type=board_type
         # Initialize DC motors
-        
+
         if board_type.lower()=="pico": #allow for different board types
             self.CHIP_ADDRESS = 108
             self.i2c = busio.I2C(board.GP9, board.GP8)
@@ -91,7 +91,7 @@ class wheelBot_2:
             self.motorOn(4, "r", speed)
             self.motorOn(3, "r", speed)
         else:
-            self.motor1.throttle = -1*(speed/100) 
+            self.motor1.throttle = -1*(speed/100)
             self.motor2.throttle = 1*(speed/100)
     def left(self,speed=50,delay=0.5):
         """
@@ -106,7 +106,7 @@ class wheelBot_2:
             self.motorOn(3, "f", speed)
         else:
             self.stop()
-            self.motor1.throttle = 1*(speed/100)  
+            self.motor1.throttle = 1*(speed/100)
             self.motor2.throttle = 1*(speed/100)
         time.sleep(delay)
     def right(self,speed=50,delay=0.5):
@@ -122,7 +122,7 @@ class wheelBot_2:
             self.motorOn(3, "r", speed)
         else:
             self.stop()
-            self.motor1.throttle = -1*(speed/100)  
+            self.motor1.throttle = -1*(speed/100)
             self.motor2.throttle = -1*(speed/100)
         time.sleep(delay)
     def backward(self,speed):
@@ -130,7 +130,7 @@ class wheelBot_2:
             self.motorOn(4, "f", speed)
             self.motorOn(3, "f", speed)
         else:
-            self.motor1.throttle = 1*(speed/100) 
+            self.motor1.throttle = 1*(speed/100)
             self.motor2.throttle = -1*(speed/100)
     def motor1_move(self,speed):
         if self.board_type=="pico":
@@ -198,8 +198,3 @@ class wheelBot_2:
     #To turn off set the speed to 0...
     def motorOff(self,motor):
         self.motorOn(motor,"f",0)
-        
-
-
-
-

@@ -9,13 +9,13 @@ Code by Dexter R Shepherd
 
 """
 
-from EduBot import wheelBot_2
+from EduBot import wheelBot
 import utime
 from machine import Pin,ADC
 from random import choice
 
 #setup the robot
-robot = wheelBot_2()
+robot = wheelBot()
 robot.stop()
 
 sensor1=Pin(26,Pin.IN)
@@ -30,8 +30,8 @@ while True:
     s2=int(sensor2.read_u16()/10)
 
     print(s1,s2)
-    
-    if abs(s2-s1)<150: #noise 
+
+    if abs(s2-s1)<150: #noise
         robot.forward(20)
         utime.sleep(0.8)
         robot.stop()
@@ -44,5 +44,3 @@ while True:
 
     utime.sleep(0.5)
 robot.stop()
-
-

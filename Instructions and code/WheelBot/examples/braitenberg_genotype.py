@@ -12,13 +12,13 @@ DEBUGGIN TIPS:
 If your robot is running away from light, then you should switch the sensor cables around (or switch the pins in the code)
 """
 
-from EduBot import wheelBot_2
+from EduBot import wheelBot
 import utime
 from machine import ADC
 
 GENOTYPE=[ 8.08404537,  9.64568124,  2.99583673,  9.69069223,  0.60330581, -0.10944596] #add genotype
 
-robot=wheelBot_2() #the robot from the library
+robot=wheelBot() #the robot from the library
 
 #setup the pins for analog read
 sensor1=ADC(26)
@@ -57,12 +57,10 @@ while True:
     speed1,speed2=calc(GENOTYPE) #place your genotype in here
     #do not change this code
     #pin directions speed
-    
+
     #still keep slow or moving forward
     speed_1=max(speed1//2,20)
     speed_2=max(speed2//2,20)
-    
+
     robot.motorOn(4, "f", speed_1)
     robot.motorOn(3, "f", speed_2)
-    
-

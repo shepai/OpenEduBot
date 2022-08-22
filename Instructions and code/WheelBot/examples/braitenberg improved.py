@@ -13,13 +13,13 @@ If your robot is running away from light, then you should switch the sensor cabl
 
 """
 
-from EduBot import wheelBot_2
+from EduBot import wheelBot
 import utime
 from machine import Pin,ADC
 from random import choice
 
 #setup the robot
-robot = wheelBot_2()
+robot = wheelBot()
 robot.stop()
 
 sensor1=ADC(26)
@@ -36,13 +36,11 @@ while True:
     #gather sensor data
     s1=getReading(sensor1,ST=ST1)
     s2=getReading(sensor2,ST=ST2)
-    
+
     print(s1,s2)
     #still keep slow or moving forward
     speed_1=max(100*s1//2,20)
     speed_2=max(100*s2//2,20)
-    
+
     robot.motorOn(4, "f", speed_1)
     robot.motorOn(3, "f", speed_2)
-    
-

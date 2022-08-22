@@ -28,7 +28,7 @@ except:
 print("Loaded OpenEduBot Education library")
 
 ValidGPIO=[i for i in range(28)] #valid pins
-class WheelBot:
+class Old_WheelBot:
     """
     Requires:
     2 DC motors
@@ -172,7 +172,7 @@ class lineFollower(WheelBot):
     def __init__(self, sensePinL=1,sensePinR=1,in1=18,in2=19,in3=20,in4=21):
         super().__init__(trigPin=None,echoPin=None,in1=18,in2=19,in3=20,in4=21)
 
-class wheelBot_2:
+class wheelBot:
     """
     Requires:
     2 DC motors
