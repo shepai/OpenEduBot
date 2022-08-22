@@ -7,6 +7,9 @@ consider switching the pins around (26 & 27).
 
 Code by Dexter R Shepherd
 
+DEBUGGIN TIPS:
+
+If your robot is running away from light, then you should switch the sensor cables around (or switch the pins in the code)
 """
 
 from EduBot import wheelBot_2
@@ -23,7 +26,7 @@ sensor2=ADC(27)
 
 #read background noise
 ST1=sensor1.read_u16()//100
-ST2=sensor1.read_u16()//100
+ST2=sensor2.read_u16()//100
 
 def getReading(sen,ST=200):
     #read the sensor pin and convert to percentage of light
@@ -62,7 +65,4 @@ while True:
     robot.motorOn(4, "f", speed_1)
     robot.motorOn(3, "f", speed_2)
     
-    #delay movement
-    utime.sleep(0.5)
-    robot.stop()
-    utime.sleep(0.2)
+
