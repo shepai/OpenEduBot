@@ -6,6 +6,8 @@ We have written a robotics library that allow connection with each chassis. The 
 
 Once the library is installed on the device.
 
+There are two variants of the library, a circuitPython and a microPython. The circuitPython can work with both the Pico and PiMaker rp2040. The microPython one is designed for the Raspberry Pi Pico. 
+
 ## Building a chassis
 This Github contains the instructions and demo code for each chassis. Parts lists can be found under each robot, as well as links to places the parts can be purchased. The item names are there, so it is up to you where you purchase thee parts from.
 

@@ -2,9 +2,10 @@
 
 There are different chassis that the library currently supports. Of course, you can build and make your own, but these are the chassis we have built support for.
 
+For both the wheelbot_2 chassis variants, the Raspberry Pi Pico Robotics board has support for both circuitpython and micropython. [The uf2 file is available here for Pi Pico circuitPython](https://raw.githubusercontent.com/shepai/OpenEduBot/main/Assets/adafruit-circuitpython-cytron_maker_pi_rp2040-en_GB-7.3.2.uf2).
 
 ## MicroPython
-MicroPython is the default on the Raspberry Pi Pico.
+MicroPython is the default on the Raspberry Pi Pico. The Raspberry Pi Pico can be converted to use CircuitPython, and vice versa. Our library supports both the PiMaker board and the pico on the CircuitPython variant.
 
 ### [WheelBot](https://github.com/shepai/OpenEduBot/tree/main/Instructions%20and%20code/WheelBot)
 Wheelbot is a robot that uses... wheels and a ball caster. It is  great for line following, obstacle avoiding, and light following tasks. This small cheap chassis can allow cheap robotics teaching in schools. This makes use of motor drivers and breadboards, allowing you to build your own circuits. This robot is better for teaching electronic tasks, and good for audience who require longer.
@@ -27,6 +28,14 @@ CircuitPython is an alternative to MicroPython that some devices use. Using EduB
 ### [WheelBot](https://github.com/shepai/OpenEduBot/tree/main/Instructions%20and%20code/CircuitPython%20WheelBot)
 This is a CircuitPython variant for the wheelbot. This has a braitenberg example for light following behaviours.
 <img src="https://raw.githubusercontent.com/shepai/OpenEduBot/main/Assets/Robot.jpeg" width="25%" >
+
+This is called in within the same way as the wheelbot_2, and you can also use this same tutorial on the micropython Pico variant. Make sure you install the uf2 file onto the Pico so that it is ready for circtuPython. The only difference is you will need to tell the object what the board type is:
+
+```
+from EduBot_CP import wheelBot_2
+
+bot = wheelBot_2(board_type="pico")
+```
 
 ## Controlling sensors
 The different example codes come with their own sensor control. This section explains how you can use different sensors an interface with them.

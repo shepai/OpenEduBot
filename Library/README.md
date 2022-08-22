@@ -6,5 +6,23 @@ The library contains different bots for different chassis. For memory efficiency
 ## CircuitPython
 CircuitPython is an open-source derivative of the MicroPython programming language targeted toward students and beginners.
 
+```
+from EduBot_CP import wheelBot_2
+
+bot = wheelBot_2()
+```
+
 ## MicroPython
 MicroPython is the default variant of python electronics on the Raspberry Pi Pico. The library has been developed for many chassis.
+
+```
+from EduBot_CP import wheelBot_2
+
+bot = wheelBot_2()
+```
+In order for it to work with the Pico and robotics board, you mst add the following parameter. 
+```
+from EduBot_CP import wheelBot_2
+
+bot = wheelBot_2(board_type="pico")
+```
