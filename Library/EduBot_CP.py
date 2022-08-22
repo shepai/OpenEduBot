@@ -88,8 +88,8 @@ class wheelBot_2:
         @param speed is the speed that the robot will move at
         """
         if self.board_type=="pico":
-            self.motorOn(4, "f", speed)
-            self.motorOn(3, "f", speed)
+            self.motorOn(4, "r", speed)
+            self.motorOn(3, "r", speed)
         else:
             self.motor1.throttle = -1*(speed/100) 
             self.motor2.throttle = 1*(speed/100)
@@ -102,8 +102,8 @@ class wheelBot_2:
         if self.board_type=="pico":
             self.motorOff(4)
             self.motorOff(3)
-            self.motorOn(4, "f", speed)
-            self.motorOn(3, "r", speed)
+            self.motorOn(4, "r", speed)
+            self.motorOn(3, "f", speed)
         else:
             self.stop()
             self.motor1.throttle = 1*(speed/100)  
@@ -118,20 +118,30 @@ class wheelBot_2:
         if self.board_type=="pico":
             self.motorOff(4)
             self.motorOff(3)
-            self.motorOn(4, "r", speed)
-            self.motorOn(3, "f", speed)
+            self.motorOn(4, "f", speed)
+            self.motorOn(3, "r", speed)
         else:
             self.stop()
             self.motor1.throttle = -1*(speed/100)  
             self.motor2.throttle = -1*(speed/100)
         time.sleep(delay)
     def backward(self,speed):
-        self.motor1.throttle = 1*(speed/100) 
-        self.motor2.throttle = -1*(speed/100)
+        if self.board_type=="pico":
+            self.motorOn(4, "f", speed)
+            self.motorOn(3, "f", speed)
+        else:
+            self.motor1.throttle = 1*(speed/100) 
+            self.motor2.throttle = -1*(speed/100)
     def motor1_move(self,speed):
-        self.motor1.throttle = 1*(speed/100)
+        if self.board_type=="pico":
+            self.motorOn(3, "r", 100*(speed/100))
+        else:
+            self.motor1.throttle = 1*(speed/100)
     def motor2_move(self,speed):
-        self.motor2.throttle = 1*(speed/100)
+        if self.board_type=="pico":
+            self.motorOn(4, "r", 100*(speed/100))
+        else:
+            self.motor2.throttle = 1*(speed/100)
     def motorOn(self,motor, direction, speed):
         #cap speed to 0-100%
         if (speed<0):
@@ -189,5 +199,7 @@ class wheelBot_2:
     def motorOff(self,motor):
         self.motorOn(motor,"f",0)
         
+
+
 
 
