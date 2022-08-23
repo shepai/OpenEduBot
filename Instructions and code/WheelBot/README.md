@@ -30,6 +30,15 @@ Mount both of the motors on the chassis, using the side plates within the two re
 
 <img src="https://raw.githubusercontent.com/shepai/OpenEduBot/main/Assets/step1.PNG" width="50%" >
 
+### Step 1.1 - Roller ball wheel
+Mount the roller ball wheel inserting the screws from the bottom. If using sensors, mount the L-shaped bracket along with the roller ball wheel.
+
+### Step 1.2 - Light Sensors
+Mount the light sensors to the L-brackets using a small standoff to offset the sensors.
+
+### Step 1.3 - 2nd Layer standoffs
+Attach 4 long standoffs in the corners of the 2nd layer, along with 2 small standoffs to mount the main controller board.
+
 ### Step 2
 Mount the main controller, make sure you have soldered some L-shaped pins underneath the Robotics board if you wish to use GPIO pins to interface with sensors. If you are using more HATs than just the robotics board, you may want to consider using Step 3 as your second layer.
 <img src="https://raw.githubusercontent.com/shepai/OpenEduBot/main/Assets/step2.PNG" width="50%" >
@@ -38,6 +47,17 @@ Mount the main controller, make sure you have soldered some L-shaped pins undern
 It is ideal to have the batteries on the top, so they can be easily changed without having to unscrew the chassis.
 <img src="https://raw.githubusercontent.com/shepai/OpenEduBot/main/Assets/step3.PNG" width="50%" >
 
+### Step 3.1 Wiring
+Wire the motors into the motor controller connections on the main controller. Left/Right motor connections are interchangable in the software so do not worry about mixing them.
+
+### Step 3.2 Battery Wiring
+Attach the battery connector into the Power BLK+RED connections on the main controller.
+
+### Step 3.3 Sensor Wiring
+If using sensors, wire them up to the servos pins on the main controller, a single wire from the sensors should be connected to the L-shaped GPUIO pins that were soldered on the underside fo the controller.
+
+### Step 4 - 3rd Layer
+Mount the battery holder using a 2 double ended threaded pieces and 4 screws. Then mount the 3rd layer to the 4, 2nd layer standoffs. Then attach the battery connector to th eholder.
 
 ## Programming
 
