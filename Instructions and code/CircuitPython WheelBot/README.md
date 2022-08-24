@@ -48,3 +48,27 @@ Download the robot control library from [Github](https://raw.githubusercontent.c
 
 ### Step 2
 You will need to connect the robot to your device via USB. Make sure you have Thonny IDE up. In the bottom right corner you should be able to select the interpreter for the IDE. We want Generic CircuitPython.
+
+
+## Troubleshooting
+There are some problems that you may come into contact with, especially if this is your first time to electronics. We have tried to list as many here as we can. If your problem is not listed, please see [issues](https://github.com/shepai/OpenEduBot/issues) and if there still isn't an answer feel free to raise one yourself!
+
+### The board wont connect to USB
+Firstly, make sure your USB device works for data transmission. Check your wiring and make sure there is no short circuiting. If this is all fine, consider having the battery switched on while you make contact with the board. We suspect there is an issue with the current being supplied to the device and it not being seen by the PC.
+
+### The sensors aren't working
+Check your wiring, also make sure the sensors are not touching the motor pins or conducting where they should not.
+
+### The motors are turning the wrong way
+There are two ways to solve this, hardware or software. Firstly make sure that the motors are wired the same. Red Black Red Black should be the pattern going in to the device. Within the examples, you can change the motors to be of speed *-1 to reverse the motors.
+
+```
+bot.motor1_move(max(r1,20) *-1) #remove *-1 for alternate direction
+bot.motor2_move(max(r2,20))
+```
+
+### The motors are not turning at allow
+Make sure the motors are both the sockets. The board should be on and your code running. Solder over the outside of the motor wire tips if you can, this prevents short circuiting.
+
+### The light detecting robot is moving away from Light
+This is likely because your sensors are the wrong way round. Try changing the pins physically or switching the pins in the code.

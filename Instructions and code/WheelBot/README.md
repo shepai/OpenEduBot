@@ -100,10 +100,10 @@ We have used the [Thonny IDE](https://thonny.org/). Once downloaded this softwar
 Once all connected you can load one of our examples in and click run. The robot will run this code while the USB is attached. To make it mobile, save the example as main.py on the Pico device, and it will run on boot.
 
 ## Troubleshooting
-There are some problems that you may come into contact with, especially if this is your first time to electronics. We have tried to list as many here as we can. If your problem is not listed, please see [issues](https://github.com/shepai/OpenEduBot/issues) and if there still isnt an answer feel free to raise one yourself!
+There are some problems that you may come into contact with, especially if this is your first time to electronics. We have tried to list as many here as we can. If your problem is not listed, please see [issues](https://github.com/shepai/OpenEduBot/issues) and if there still isn't an answer feel free to raise one yourself!
 
 ### The board wont connect to USB
-Firstly, make sure your USB device works for data transmission. Check your wiring and make sure there is no short circuiting. If this is all fine, consider havig the battery switched on while you make contact with the board. We suspect there is an issue with the current being supplied to the device and it not being seen by the PC.
+Firstly, make sure your USB device works for data transmission. Check your wiring and make sure there is no short circuiting. If this is all fine, consider having the battery switched on while you make contact with the board. We suspect there is an issue with the current being supplied to the device and it not being seen by the PC.
 
 ### The sensors aren't working
 Check your wiring, also make sure the sensors are not touching the motor pins or conducting where they should not.
