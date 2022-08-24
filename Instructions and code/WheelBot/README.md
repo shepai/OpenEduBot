@@ -47,13 +47,13 @@ Mount the main controller, make sure you have soldered some L-shaped pins undern
 It is ideal to have the batteries on the top, so they can be easily changed without having to unscrew the chassis.
 <img src="https://raw.githubusercontent.com/shepai/OpenEduBot/main/Assets/step3.PNG" width="50%" >
 
-### Step 3.1 Wiring
+#### Step 3.1 Wiring
 Wire the motors into the motor controller connections on the main controller. Left/Right motor connections are interchangable in the software so do not worry about mixing them.
 
-### Step 3.2 Battery Wiring
+#### Step 3.2 Battery Wiring
 Attach the battery connector into the Power BLK+RED connections on the main controller.
 
-### Step 3.3 Sensor Wiring
+#### Step 3.3 Sensor Wiring
 If using sensors, wire them up to the servos pins on the main controller, a single wire from the sensors should be connected to the L-shaped GPUIO pins that were soldered on the underside fo the controller.
 
 ### Step 4 - 3rd Layer
