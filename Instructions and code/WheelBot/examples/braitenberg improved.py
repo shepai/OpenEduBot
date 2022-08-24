@@ -22,9 +22,10 @@ from random import choice
 robot = wheelBot()
 robot.stop()
 
-sensor1=ADC(26)
-sensor2=ADC(27)
-
+#switch pins if te robot is moving away from light
+sensor1=ADC(27)
+sensor2=ADC(26)
+  
 #read background noise
 ST1=sensor1.read_u16()//100
 ST2=sensor2.read_u16()//100
@@ -39,8 +40,9 @@ while True:
 
     print(s1,s2)
     #still keep slow or moving forward
-    speed_1=max(100*s1//2,20)
-    speed_2=max(100*s2//2,20)
-
-    robot.motorOn(4, "f", speed_1)
-    robot.motorOn(3, "f", speed_2)
+    speed_1=max(100*s1,20)
+    speed_2=max(100*s2,20)
+    
+    #switch r to f if the robot is moving backwards
+    robot.motorOn(4, "r", speed_1)
+    robot.motorOn(3, "r", speed_2)
