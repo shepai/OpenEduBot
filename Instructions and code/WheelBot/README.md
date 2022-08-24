@@ -98,3 +98,21 @@ The EduBot.py found in [library](https://github.com/shepai/OpenEduBot/Library) m
 We have used the [Thonny IDE](https://thonny.org/). Once downloaded this software allows you to connect to the Raspberry Pi Pico. Simply go to the bottom right corner of the window, and select an interpreter. We are using the Raspberry Pi Pico. Raspberry Pi have a [tutorial](https://projects.raspberrypi.org/en/projects/getting-started-with-the-pico) on getting set up with the Pico.
 
 Once all connected you can load one of our examples in and click run. The robot will run this code while the USB is attached. To make it mobile, save the example as main.py on the Pico device, and it will run on boot.
+
+## Troubleshooting
+There are some problems that you may come into contact with, especially if this is your first time to electronics. We have tried to list as many here as we can. If your problem is not listed, please see [issues](https://github.com/shepai/OpenEduBot/issues) and if there still isnt an answer feel free to raise one yourself!
+
+### The board wont connect to USB
+Firstly, make sure your USB device works for data transmission. Check your wiring and make sure there is no short circuiting. If this is all fine, consider havig the battery switched on while you make contact with the board. We suspect there is an issue with the current being supplied to the device and it not being seen by the PC.
+
+### The sensors aren't working
+Check your wiring, also make sure the sensors are not touching the motor pins or conducting where they should not.
+
+### The motors are turning the wrong way
+There are two ways to solve this, hardware or software. Firstly make sure that the motors are wired the same. Red Black Red Black should be the pattern going in to the device. Within the examples, you can change the motors to be from "f" to "r" or vice versa.
+
+### The motors are not turning at allow
+Make sure the motors are both in the motor 2 and motor 4 sockets. The board should be on and your code running. Solder over the outside of the motor wire tips if you can, this prevents short circuiting.
+
+### The light detecting robot is moving away from Light
+This is likely because your sensors are the wrong way round. Try changing the pins physically or switching the pins in the code.
