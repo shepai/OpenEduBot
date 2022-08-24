@@ -168,7 +168,7 @@ class Old_WheelBot:
         self.IN4.value(0)
 
 
-class lineFollower(WheelBot):
+class lineFollower(Old_WheelBot):
     def __init__(self, sensePinL=1,sensePinR=1,in1=18,in2=19,in3=20,in4=21):
         super().__init__(trigPin=None,echoPin=None,in1=18,in2=19,in3=20,in4=21)
 
