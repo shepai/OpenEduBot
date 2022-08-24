@@ -30,13 +30,13 @@ Mount both of the motors on the chassis, using the side plates within the two re
 
 <img src="https://raw.githubusercontent.com/shepai/OpenEduBot/main/Assets/step1.PNG" width="50%" >
 
-### Step 1.1 - Roller ball wheel
+#### Step 1.1 - Roller ball wheel
 Mount the roller ball wheel inserting the screws from the bottom. If using sensors, mount the L-shaped bracket along with the roller ball wheel.
 
-### Step 1.2 - Light Sensors
+#### Step 1.2 - Light Sensors
 Mount the light sensors to the L-brackets using a small standoff to offset the sensors.
 
-### Step 1.3 - 2nd Layer standoffs
+#### Step 1.3 - 2nd Layer standoffs
 Attach 4 long standoffs in the corners of the 2nd layer, along with 2 small standoffs to mount the main controller board.
 
 ### Step 2
