@@ -30,6 +30,7 @@ This is a CircuitPython variant for the wheelbot. This has a braitenberg example
 <img src="https://raw.githubusercontent.com/shepai/OpenEduBot/main/Assets/Robot.jpeg" width="25%" >
 
 There is also a slick variant of the chassis that you can build on two layers.
+
 <img src="https://raw.githubusercontent.com/shepai/OpenEduBot/main/Assets/newRobot.jpg" width="25%" >
 
 This is called in within the same way as the wheelbot_2, and you can also use this same tutorial on the micropython Pico variant. Make sure you install the uf2 file onto the Pico so that it is ready for circtuPython. The only difference is you will need to tell the object what the board type is:
