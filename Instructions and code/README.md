@@ -17,8 +17,14 @@ Wheelbot is an updated version of the older wheelbot that uses motor drivers, to
 
 <img src="https://raw.githubusercontent.com/shepai/OpenEduBot/main/Assets/291091183_407439234666715_8003499927750599944_n.jpg" width="25%" >
 
+There is also a slick variant of the chassis that you can build on two layers. This is our newer design which is more compact and easier to construct.
+
+<img src="https://raw.githubusercontent.com/shepai/OpenEduBot/main/Assets/newRobot.jpg" width="25%" >
+
+We recommend purchasing assorted spacers/standoffs of 2.5mm for mounting electronics. Depending on your circuit layout and what you include, having a larger number of spaces gives you more options.
+
 ### [ServoBot](https://github.com/shepai/OpenEduBot/tree/main/Instructions%20and%20code/ServoBot)
-Servo bot is in development, and will allow you to control two wheels via continuous rotation servos. Continuous rotation servos typically have a threshold screwjoint, if you find that your motors are rotating when you have not made them it is likely you will need to turn the threshold till they stop moving. Be aware that the equilibrium can only be set when the motors have been issued a stop command and are still rotating.
+Servo bot is in development, and will allow you to control two wheels via continuous rotation servos. Continuous rotation servos typically have a threshold screw joint, if you find that your motors are rotating when you have not made them it is likely you will need to turn the threshold till they stop moving. Be aware that the equilibrium can only be set when the motors have been issued a stop command and are still rotating.
 
 
 ## CircuitPython
@@ -29,11 +35,8 @@ CircuitPython is an alternative to MicroPython that some devices use. Using EduB
 This is a CircuitPython variant for the wheelbot. This has a braitenberg example for light following behaviours.
 <img src="https://raw.githubusercontent.com/shepai/OpenEduBot/main/Assets/Robot.jpeg" width="25%" >
 
-There is also a slick variant of the chassis that you can build on two layers.
 
-<img src="https://raw.githubusercontent.com/shepai/OpenEduBot/main/Assets/newRobot.jpg" width="25%" >
-
-This is called in within the same way as the wheelbot_2, and you can also use this same tutorial on the micropython Pico variant. Make sure you install the uf2 file onto the Pico so that it is ready for circtuPython. The only difference is you will need to tell the object what the board type is:
+This is called in within the same way as the wheelbot_2, and you can also use this same tutorial on the micropython Pico variant. Make sure you install the uf2 file onto the Pico so that it is ready for circuitPython. The only difference is you will need to tell the object what the board type is:
 
 ```
 from EduBot_CP import wheelBot_2

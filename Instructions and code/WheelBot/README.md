@@ -8,10 +8,15 @@ The WheelBot chassis can be implemented using a number of different dc motor con
 - Light sensitivity sensors (optional)
 - AA batteries 4
 
-You should be able to build a working one of these for approx £30-£50 each depending on bulk buy and how much you are willing to solder. This robot is very similar to the WheelBot robot, but with one key difference - which is the robotic hat. This hat is more expensive than using a motor driver but much more compact for the chassis. Additionally, it has an inbuilt oltage regulator so both the pico and hat can be powererd from one battery holder.
+You should be able to build a working one of these for approx £30-£50 each depending on bulk buy and how much you are willing to solder. This robot is very similar to the WheelBot robot, but with one key difference - which is the robotic hat. This hat is more expensive than using a motor driver but much more compact for the chassis. Additionally, it has an inbuilt voltage regulator so both the Pico and hat can be powered from one battery holder.
 
 <img src="https://raw.githubusercontent.com/shepai/OpenEduBot/main/Assets/wheelBot2.jpg" width="50%" >
 
+<img src="https://raw.githubusercontent.com/shepai/OpenEduBot/main/Assets/newRobot.jpg" width="25%" >
+
+This page has instructions to build the first chassis, but the second chassis can be built in a similar way. The motor and ball assembly remains the same.
+
+The Pico can be flashed with circuitPython should you need access to libraries such as [ulab](https://docs.circuitpython.org/en/latest/shared-bindings/ulab/index.html) (cp variant of numpy)
 
 ## Building the chassis
 Firstly you will need to get the following parts. These parts can be found in the excel spreadsheet "costs.xlsx". It approximately costs £50 a robot. The more you build, the cheaper they become.
@@ -54,10 +59,10 @@ Wire the motors into the motor controller connections on the main controller. Le
 Attach the battery connector into the Power BLK+RED connections on the main controller.
 
 #### Step 3.3 Sensor Wiring
-If using sensors, wire them up to the servos pins on the main controller, a single wire from the sensors should be connected to the L-shaped GPUIO pins that were soldered on the underside fo the controller.
+If using sensors, wire them up to the servos pins on the main controller, a single wire from the sensors should be connected to the L-shaped GPUIO pins that were soldered on the underside for the controller.
 
 ### Step 4 - 3rd Layer
-Mount the battery holder using a 2 double ended threaded pieces and 4 screws. Then mount the 3rd layer to the 4, 2nd layer standoffs. Then attach the battery connector to th eholder.
+Mount the battery holder using a 2 double ended threaded pieces and 4 screws. Then mount the 3rd layer to the 4, 2nd layer standoffs. Then attach the battery connector to the holder.
 
 ## Programming
 
