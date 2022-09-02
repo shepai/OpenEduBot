@@ -6,10 +6,15 @@ led=[Pin(2,Pin.OUT),Pin(3,Pin.OUT),Pin(4,Pin.OUT)]
 
 def getReading(sen):
     return max((200-sen.read_u16()//100)/200,0)
+
+def getRawPin(sensor):
+    #this is if you have made your own sensor
+    return (sensor.read_u16() / 65535 * 3.7)/3.7
+
 print(dir(led[0]))
 while True:
     utime.sleep(0.5)
-    val=getReading(sensor1)*100
+    val=getRawPin(sensor1)*100
     print(val,"% Light intensity")
     if val>80:
         led[2].high()
