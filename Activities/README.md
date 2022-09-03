@@ -5,16 +5,16 @@
     <h2>Lab 1 - </h2>
   </li>
   <li>
-    <h2>Lab 2 - </h2>
+    <h2>Lab 2 - Wheel Movements</h2>
   </li>
   <li>
-    <h2>Lab 3 - Light track navigation</h2>
+    <h2>Lab 3 - </h2>
   </li>
   <li>
-    <h2>Lab 4 - Breitenberg's vehicle</h2>
+    <h2>Lab 4 - Light track navigation</h2>
   </li>  
   <li>
-    <h2>Lab 5 - </h2>
+    <h2>Lab 5 - Breitenberg's vehicle</h2>
   </li>
   <li>
     <h2>Lab 6 - Parameters definition</h2>
