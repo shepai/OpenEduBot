@@ -25,30 +25,54 @@
     <li>
       
     <h2>
-      ```diff
       
-      +Lab 2 - WheelBot Movements
+      ```diff
+      + Lab 2 - WheelBot Movements
        ```
       </h2>
      
   </li>
   <li>
-    <h2 style="color:green">Lab 3 - Ultrasonic Sensors</h2> 
+    <h2>
+            ```diff
+     + Lab 3 - Ultrasonic Sensors</h2> 
+     ```
   </li>
     <li>
-    <h2 style="color:green">Lab 4 - object Distance</h2>
+    <h2>
+      ```diff
+     + Lab 4 - object Distance
+      ```
+      </h2>
   </li>
   <li>
-    <h2 style="color:green">Lab 5 - Photoresistor light sensors</h2>
+    <h2>
+    ```diff
+      Lab 5 - Photoresistor light sensors
+    ```
+    </h2>
   </li>
   <li>
-    <h2 style="color:green">Lab 6 - Light track navigation</h2>
+    
+    <h2>
+      ```diff
+      Lab 6 - Light track navigation
+        ```
+    </h2>
   </li>  
   <li>
-    <h2 style="color:green">Lab 7 - Full bot control and Parameters definition</h2>
+    <h2>
+      ```diff
+      Lab 7 - Full bot control and Parameters definition
+        ```
+    </h2>
   </li>
   <li>
-    <h2 style="color:orange">Lab 8 - Breitenberg's vehicle</h2>
+    <h2>
+      ```diff
+      @@Lab 8 - Breitenberg's vehicle@@
+    ```
+    </h2>
   </li>
   <li>
     <h2 style="color:orange">Lab 9 - Neural Network</h2>
