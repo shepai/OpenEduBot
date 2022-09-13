@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 
 <h1>Activities lab sheets of the OpenEduBot library</h1>
