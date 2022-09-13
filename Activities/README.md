@@ -6,13 +6,21 @@
    
 <h1>Activities lab sheets of the OpenEduBot library</h1>
 
+    
+```diff
+- This is a red colored line
++ This is a green colored line
+@@ This is a purple colored line @@
+```
+    
+    
 <ul> 
   <li>
     <h2>
       
 ```diff
       + Lab 1 - Getting Started and Introduction
-    ```
+ ```
     </h2>
   </li>
     <li>
