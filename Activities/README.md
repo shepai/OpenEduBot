@@ -26,12 +26,10 @@
     <h2>Lab 8 - Parameters definition</h2>
   </li>
   <li>
-    <h2>Lab 9 - Genetic Algorithms</h2>
+    <h2>Lab 9 - Neural Network</h2>
   </li>
   <li>
-    <h2>Lab 10 - Neural Network</h2>
+    <h2>Lab 10 - Robot simulation of Reality Gap - Genetic Algorithms</h2>
   </li>
-  <li>
-    <h2>Lab 11 - Robot simulation of Reality Gap</h2>
-  </li>
+
 </ul>
