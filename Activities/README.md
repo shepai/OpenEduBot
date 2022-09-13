@@ -5,7 +5,7 @@
     <h2>Lab 1 - Getting Started and Introduction</h2>
   </li>
     <li>
-    <h2>Lab 2 - ServoBot and WheelBot Movements</h2>
+    <h2>Lab 2 - WheelBot Movements</h2>
   </li>
   <li>
     <h2>Lab 3 - Ultrasonic Sensors</h2> 
