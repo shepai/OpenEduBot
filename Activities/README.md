@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
-
+<head>
+  </head>
+  <body>
+   
 <h1>Activities lab sheets of the OpenEduBot library</h1>
 
 <ul> 
@@ -39,4 +42,5 @@
   </li>
 
 </ul>
+  </body>
 </html>
