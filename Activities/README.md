@@ -6,12 +6,7 @@
    
 <h1>Activities lab sheets of the OpenEduBot library</h1>
 
-    
-diff
-- This is a red colored line
-+ This is a green colored linw
-    
-    
+
 <ul> 
   <li>
     <h2>Lab 1 - Getting Started and Introduction (easy)</h2>
