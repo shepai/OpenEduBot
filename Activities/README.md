@@ -23,9 +23,14 @@
     </h2>
   </li>
     <li>
+      
+    <h2>
       ```diff
-   + <h2>Lab 2 - WheelBot Movements</h2>
-      ```
+      
+      +Lab 2 - WheelBot Movements
+       ```
+      </h2>
+     
   </li>
   <li>
     <h2 style="color:green">Lab 3 - Ultrasonic Sensors</h2> 
