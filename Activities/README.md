@@ -9,7 +9,7 @@
 
 <ul> 
   <li>
-    <h2>Lab 1 - Getting Started and Introduction (easy)</h2>
+    <h2>```-Lab 1 - Getting Started and Introduction (easy)```</h2>
 
   </li>
     <li>
