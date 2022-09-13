@@ -8,7 +8,12 @@
 
 <ul> 
   <li>
-    <h2 style="color:#00FF00">Lab 1 - Getting Started and Introduction</h2>
+    <h2>
+      
+```diff
+      + Lab 1 - Getting Started and Introduction
+    ```
+    </h2>
   </li>
     <li>
     <h2 style="color:green">Lab 2 - WheelBot Movements</h2>
@@ -47,8 +52,3 @@
 
 
 
-```diff
-- This is a red colored line
-+ This is a green colored line
-@@ This is a purple colored line @@
-```
