@@ -18,8 +18,8 @@
     <h2>
       
 ```diff
-      + Lab 1 - Getting Started and Introduction
- ```
++ Lab 1 - Getting Started and Introduction
+```
     </h2>
   </li>
     <li>
