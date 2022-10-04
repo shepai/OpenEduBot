@@ -10,8 +10,11 @@ from analogio import AnalogIn
 s1 = AnalogIn(board.GP28)
 s2 = AnalogIn(board.GP26)
 
-bot=wheelBot()
-
+bot=wheelBot(board_type="pico_1")
+bot.motorOn(2,"f",40)
+bot.forward(50)
+print("..")
+time.sleep(10)
 def get_intensity(pin):
     return max(min(1-((pin.value * 3.3) / 65536),1),0)
 
