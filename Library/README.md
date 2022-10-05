@@ -15,22 +15,35 @@ All can be found under the (adafruit circuitpython library bundle)[https://circu
 CircuitPython is an open-source derivative of the MicroPython programming language targeted toward students and beginners.
 
 ```
-from EduBot_CP import wheelBot_2
+from EduBot_CP import wheelBot
 
-bot = wheelBot_2()
+bot = wheelBot()
+```
+
+In order for it to work with the Pico and motor driver board, you must add the following parameter.
+```
+from EduBot_CP import wheelBot
+
+bot = wheelBot(board_type="pico_1")
 ```
 
 ## MicroPython
 MicroPython is the default variant of python electronics on the Raspberry Pi Pico. The library has been developed for many chassis.
 
 ```
-from EduBot_CP import wheelBot_2
+from EduBot_CP import wheelBot
 
-bot = wheelBot_2()
+bot = wheelBot()
 ```
-In order for it to work with the Pico and robotics board, you mst add the following parameter.
+In order for it to work with the Pico and robotics board, you must add the following parameter.
 ```
-from EduBot_CP import wheelBot_2
+from EduBot_CP import wheelBot
 
-bot = wheelBot_2(board_type="pico")
+bot = wheelBot(board_type="pico")
+```
+In order for it to work with the Pico and (Kitroniks motor driver board)[https://thepihut.com/products/motor-driver-board-for-raspberry-pi-pico], you must add the following parameter.
+```
+from EduBot_CP import wheelBot
+
+bot = wheelBot(board_type="pico_1")
 ```

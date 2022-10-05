@@ -10,6 +10,7 @@ The WheelBot2 chassis can be implemented using a number of different dc motor co
 
 <img src="https://raw.githubusercontent.com/shepai/OpenEduBot/main/Assets/Robot.jpeg" width="50%" >
 
+You can also use the Raspberry Pi Pico with CircuiPython by flashing it with the correct [uf2 file](https://circuitpython.org/downloads). This means the library supports different boards and different motor controllers. This uses the PiMaker, or can use a Pico with the Kitroniks robotics board or Kitroniks motor driver. Selecting between either of them can be done in the library [(See documentation)](https://github.com/shepai/OpenEduBot/tree/main/Library)
 ## Building the chassis
 Firstly you will need to get the following parts. These parts can be found in the excel spreadsheet "costs.xlsx". It approximately costs £50 a robot. The more you build, the cheaper they become.
 

@@ -18,6 +18,8 @@ This page has instructions to build the first chassis, but the second chassis ca
 
 The Pico can be flashed with circuitPython should you need access to libraries such as [ulab](https://docs.circuitpython.org/en/latest/shared-bindings/ulab/index.html) (cp variant of numpy)
 
+The robot can use the Kitroniks motor driver and the Kitroniks robotics board. Selecting between either of them can be done in the library [(See documentation)](https://github.com/shepai/OpenEduBot/tree/main/Library)
+
 ## Building the chassis
 Firstly you will need to get the following parts. These parts can be found in the excel spreadsheet "costs.xlsx". It approximately costs £50 a robot. The more you build, the cheaper they become.
 
