@@ -19,7 +19,7 @@ from machine import Pin,ADC
 from random import choice
 
 #setup the robot
-robot = wheelBot(board_type="pico_1")
+robot = wheelBot() #board_type="pico_1"
 robot.stop()
 
 #switch pins if te robot is moving away from light
