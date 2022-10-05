@@ -192,12 +192,23 @@ class wheelBot:
     SRV_REG_BASE = 0x08
     MOT_REG_BASE = 0x28
     REG_OFFSET = 4
-    def __init__(self, I2CAddress=108,sda=8,scl=9):
-        self.CHIP_ADDRESS = 108
-        sda=machine.Pin(sda)
-        scl=machine.Pin(scl)
-        self.i2c=machine.I2C(0,sda=sda, scl=scl, freq=100000)
-        self.initPCA()
+    def __init__(self, I2CAddress=108,sda=8,scl=9,board_type="pico"):
+        self.board_type=board_type
+        if self.board_type=="pico":
+            self.CHIP_ADDRESS = 108
+            sda=machine.Pin(sda)
+            scl=machine.Pin(scl)
+            self.i2c=machine.I2C(0,sda=sda, scl=scl, freq=100000)
+            self.initPCA()
+        elif self.board_type=="pico_1":
+            self.motor1Forward=machine.PWM(Motor1ForwardPin)
+            self.motor1Reverse=machine.PWM(Motor1ReversePin)
+            self.motor2Forward=machine.PWM(Motor2ForwardPin)
+            self.motor2Reverse=machine.PWM(Motor2ReversePin)
+            self.motor1Forward.freq(PWMFreq)
+            self.motor1Reverse.freq(PWMFreq)
+            self.motor2Forward.freq(PWMFreq)
+            self.motor2Reverse.freq(PWMFreq)
     #to perform a software reset on the PCA chip.
     #Separate from the init function so we can reset at any point if required - useful for development...
     def swReset(self):
@@ -226,28 +237,50 @@ class wheelBot:
             speed = 0
         elif (speed>100):
             speed=100
-
-        motorReg = self.MOT_REG_BASE + (2 * (motor - 1) * self.REG_OFFSET)
-        PWMVal = int(speed * 40.95)
-        lowByte = PWMVal & 0xFF
-        highByte = (PWMVal>>8) & 0xFF #motors can use all 0-4096
-        #print (motor, direction, "LB ",lowByte," HB ",highByte)
-        if direction == "f":
-            self.i2c.writeto_mem(self.CHIP_ADDRESS, motorReg,bytes([lowByte]))
-            self.i2c.writeto_mem(self.CHIP_ADDRESS, motorReg+1,bytes([highByte]))
-            self.i2c.writeto_mem(self.CHIP_ADDRESS, motorReg+4,bytes([0]))
-            self.i2c.writeto_mem(self.CHIP_ADDRESS, motorReg+5,bytes([0]))
-        elif direction == "r":
-            self.i2c.writeto_mem(self.CHIP_ADDRESS, motorReg+4,bytes([lowByte]))
-            self.i2c.writeto_mem(self.CHIP_ADDRESS, motorReg+5,bytes([highByte]))
-            self.i2c.writeto_mem(self.CHIP_ADDRESS, motorReg,bytes([0]))
-            self.i2c.writeto_mem(self.CHIP_ADDRESS, motorReg+1,bytes([0]))
-        else:
-            self.i2c.writeto_mem(self.CHIP_ADDRESS, motorReg+4,bytes([0]))
-            self.i2c.writeto_mem(self.CHIP_ADDRESS, motorReg+5,bytes([0]))
-            self.i2c.writeto_mem(self.CHIP_ADDRESS, motorReg,bytes([0]))
-            self.i2c.writeto_mem(self.CHIP_ADDRESS, motorReg+1,bytes([0]))
-            raise Exception("INVALID DIRECTION")
+        if self.board_type=="pico":
+            motorReg = self.MOT_REG_BASE + (2 * (motor - 1) * self.REG_OFFSET)
+            PWMVal = int(speed * 40.95)
+            lowByte = PWMVal & 0xFF
+            highByte = (PWMVal>>8) & 0xFF #motors can use all 0-4096
+            #print (motor, direction, "LB ",lowByte," HB ",highByte)
+            if direction == "f":
+                self.i2c.writeto_mem(self.CHIP_ADDRESS, motorReg,bytes([lowByte]))
+                self.i2c.writeto_mem(self.CHIP_ADDRESS, motorReg+1,bytes([highByte]))
+                self.i2c.writeto_mem(self.CHIP_ADDRESS, motorReg+4,bytes([0]))
+                self.i2c.writeto_mem(self.CHIP_ADDRESS, motorReg+5,bytes([0]))
+            elif direction == "r":
+                self.i2c.writeto_mem(self.CHIP_ADDRESS, motorReg+4,bytes([lowByte]))
+                self.i2c.writeto_mem(self.CHIP_ADDRESS, motorReg+5,bytes([highByte]))
+                self.i2c.writeto_mem(self.CHIP_ADDRESS, motorReg,bytes([0]))
+                self.i2c.writeto_mem(self.CHIP_ADDRESS, motorReg+1,bytes([0]))
+            else:
+                self.i2c.writeto_mem(self.CHIP_ADDRESS, motorReg+4,bytes([0]))
+                self.i2c.writeto_mem(self.CHIP_ADDRESS, motorReg+5,bytes([0]))
+                self.i2c.writeto_mem(self.CHIP_ADDRESS, motorReg,bytes([0]))
+                self.i2c.writeto_mem(self.CHIP_ADDRESS, motorReg+1,bytes([0]))
+                raise Exception("INVALID DIRECTION")
+        elif self.board_type=="pico_1":
+            PWM = int(speed*655.35)
+            if motor == 1:
+                if direction == "f":
+                    self.motor1Forward.duty_u16(PWM)
+                    self.motor1Reverse.duty_u16(0)
+                elif direction == "r":
+                    self.motor1Forward.duty_u16(0)
+                    self.motor1Reverse.duty_u16(PWM)
+                else:
+                    raise Exception("INVALID DIRECTION") #harsh, but at least you'll know
+            elif motor == 2:
+                if direction == "f":
+                    self.motor2Forward.duty_u16(PWM)
+                    self.motor2Reverse.duty_u16(0)
+                elif direction == "r":
+                    self.motor2Forward.duty_u16(0)
+                    self.motor2Reverse.duty_u16(PWM)
+                else:
+                    raise Exception("INVALID DIRECTION") #harsh, but at least you'll know
+            else:
+                raise Exception("INVALID MOTOR") #harsh, but at least you'll know
     #To turn off set the speed to 0...
     def motorOff(self,motor):
         self.motorOn(motor,"f",0)

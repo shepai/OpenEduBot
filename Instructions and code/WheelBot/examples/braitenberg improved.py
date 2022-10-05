@@ -19,13 +19,13 @@ from machine import Pin,ADC
 from random import choice
 
 #setup the robot
-robot = wheelBot()
+robot = wheelBot(board_type="pico_1")
 robot.stop()
 
 #switch pins if te robot is moving away from light
 sensor1=ADC(27)
 sensor2=ADC(26)
-  
+
 #read background noise
 ST1=sensor1.read_u16()//100
 ST2=sensor2.read_u16()//100
