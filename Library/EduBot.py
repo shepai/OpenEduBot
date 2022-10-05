@@ -201,6 +201,11 @@ class wheelBot:
             self.i2c=machine.I2C(0,sda=sda, scl=scl, freq=100000)
             self.initPCA()
         elif self.board_type=="pico_1":
+            Motor1ForwardPin = machine.Pin(3)
+            Motor1ReversePin = machine.Pin(2)
+            Motor2ForwardPin = machine.Pin(6)
+            Motor2ReversePin = machine.Pin(7)
+            PWMFreq = 10000
             self.motor1Forward=machine.PWM(Motor1ForwardPin)
             self.motor1Reverse=machine.PWM(Motor1ReversePin)
             self.motor2Forward=machine.PWM(Motor2ForwardPin)
@@ -261,6 +266,7 @@ class wheelBot:
                 raise Exception("INVALID DIRECTION")
         elif self.board_type=="pico_1":
             PWM = int(speed*655.35)
+            motor-=2
             if motor == 1:
                 if direction == "f":
                     self.motor1Forward.duty_u16(PWM)
@@ -380,3 +386,5 @@ class servoBot:
         highByte = (PWMVal>>8)&0x01 #cap high byte at 1 - shoud never be more than 2.5mS.
         self.i2c.writeto_mem(self.CHIP_ADDRESS, calcServo,bytes([lowByte]))
         self.i2c.writeto_mem(self.CHIP_ADDRESS, calcServo+1,bytes([highByte]))
+
+
