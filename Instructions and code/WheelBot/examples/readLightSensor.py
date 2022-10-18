@@ -1,20 +1,19 @@
 from machine import Pin,ADC
 import utime
 
-sensor1=ADC(26)
+sensor1=ADC(27)
 led=[Pin(2,Pin.OUT),Pin(3,Pin.OUT),Pin(4,Pin.OUT)]
 
-def getReading(sen):
-    return max((200-sen.read_u16()//100)/200,0)
-
+voltage=4.8
 def getRawPin(sensor):
     #this is if you have made your own sensor
-    return (sensor.read_u16() / 65535 * 3.7)/3.7
+    return 1-((sensor.read_u16() / 65535 * voltage)/voltage)
 
 print(dir(led[0]))
 while True:
     utime.sleep(0.5)
     val=getRawPin(sensor1)*100
+    val
     print(val,"% Light intensity")
     if val>80:
         led[2].high()
