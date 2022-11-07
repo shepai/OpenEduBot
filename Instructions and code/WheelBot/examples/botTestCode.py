@@ -12,14 +12,16 @@ DEBUGGIN TIPS:
 If your robot is running away from light, then you should switch the sensor cables around (or switch the pins in the code)
 
 """
-sensor1=ADC(27)
-sensor2=ADC(26)
+
 
 
 import utime
 from machine import Pin,ADC
 import machine
 from random import choice
+
+sensor1=ADC(27)
+sensor2=ADC(26)
 
 class wheelBot:
     """
@@ -187,7 +189,7 @@ class wheelBot:
 #setup the robot
 robot = wheelBot() #board_type="pico_1"
 robot.stop()
-
+utime.sleep(4)
 #switch pins if te robot is moving away from light
 
 
@@ -198,8 +200,8 @@ def getRawPin(sensor):
 
 while True:
     #gather sensor data
-    s1=getRawPin(sensor1)/2
-    s2=getRawPin(sensor2)/2
+    s1=getRawPin(sensor1)*0.5 +0.2
+    s2=getRawPin(sensor2)*0.5 +0.2
 
     print(s1,s2)
     #still keep slow or moving forward
