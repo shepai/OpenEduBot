@@ -39,19 +39,19 @@ bot = wheelBot(board_type="pico_1")
 MicroPython is the default variant of python electronics on the Raspberry Pi Pico. The library has been developed for many chassis.
 
 ```
-from EduBot_CP import wheelBot
+from EduBot import wheelBot
 
 bot = wheelBot()
 ```
 In order for it to work with the Pico and robotics board, you must add the following parameter.
 ```
-from EduBot_CP import wheelBot
+from EduBot import wheelBot
 
 bot = wheelBot(board_type="pico")
 ```
 In order for it to work with the Pico and (Kitroniks motor driver board)[https://thepihut.com/products/motor-driver-board-for-raspberry-pi-pico], you must add the following parameter.
 ```
-from EduBot_CP import wheelBot
+from EduBot import wheelBot
 
 bot = wheelBot(board_type="pico_1")
 ```
