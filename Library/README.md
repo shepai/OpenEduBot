@@ -24,7 +24,6 @@ Using CircuitPython with the Pico and robotics hat you will need to use:
 
 ```
 from EduBot_CP import wheelBot
-import time
 
 bot = wheelBot(board_type="pico")
 ```
