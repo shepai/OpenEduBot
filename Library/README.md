@@ -20,6 +20,15 @@ from EduBot_CP import wheelBot
 bot = wheelBot()
 ```
 
+Using CircuitPython with the Pico and robotics hat you will need to use:
+
+```
+from EduBot_CP import wheelBot
+import time
+
+bot = wheelBot(board_type="pico")
+```
+
 In order for it to work with the Pico and motor driver board, you must add the following parameter.
 ```
 from EduBot_CP import wheelBot
