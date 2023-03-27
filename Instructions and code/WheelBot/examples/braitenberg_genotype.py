@@ -37,13 +37,9 @@ sensor_gain=0.5
 
 def calc(genotype):
     w_ll,w_lr,w_rl,w_rr,bl,br = genotype
-    # Calculate (square) distance to element
-    dl=getReading(sensor1,ST=ST1)
-    dr=getReading(sensor2,ST=ST2)
-
     #  Calculate local intensity
-    il = sensor_gain/dl;
-    ir = sensor_gain/dr;
+    il=getReading(sensor1,ST=ST1)
+    ir =getReading(sensor2,ST=ST2)
     #weights times inputs plus bias
     lm = il*w_ll + ir*w_rl + bl;
     rm = il*w_lr + ir*w_rr + br;
