@@ -14,6 +14,7 @@ import board
 import busio
 import busio as io
 import sdcardio
+import adafruit_sdcard
 import storage
 import adafruit_mpu6050
 import adafruit_ht16k33.matrix
@@ -41,12 +42,13 @@ class DexBug:
         self.i2c = io.I2C(board.GP17, board.GP16)
         self.i2c.try_lock()
         print("devices",self.i2c.scan())
-        for address in self.i2c.scan():
-            print("\tFound device at address: 0x{:02X}".format(address))
+        #for address in self.i2c.scan():
+        #     print("\tFound device at address: 0x{:02X}".format(address))
         self.i2c.unlock()
         #setup sd card
         spi = busio.SPI(board.GP14, MISO=board.GP12, MOSI=board.GP15)
-        cs = board.GP15
+        cs = board.GP13 #digitalio.DigitalInOut()
+        #sdcard = adafruit_sdcard.SDCard(spi, cs)
         self.sd=1
         try:
             sd = sdcardio.SDCard(spi, cs)
@@ -54,8 +56,8 @@ class DexBug:
             storage.mount(vfs, '/sd')
             with open("/sd/test.csv", "w") as f:
                 f.write("")
-        except:
-            print("No Sd card")
+        except OSError as e:
+            print("No Sd card",e)
             self.sd=0
         #setup eye
         self.timer=time.time()
@@ -104,10 +106,39 @@ class DexBug:
         self.Lpin = analogio.AnalogIn(board.GP28)
         self.Rpin = analogio.AnalogIn(board.GP26)
         self.OPin = analogio.AnalogIn(board.GP27)
-        #bandpass filter
-        #self.LP=self.getFeet()
-        #self.HP=self.getFeet()
+        #set up dc motors
+        motor1_a = board.GP21
+        motor1_b = board.GP20
+        motor2_a = board.GP19
+        motor2_b = board.GP18
+        self.motor1_a = digitalio.DigitalInOut(motor1_a)
+        self.motor1_b = digitalio.DigitalInOut(motor1_b)
+        self.motor2_a = digitalio.DigitalInOut(motor2_a)
+        self.motor2_b = digitalio.DigitalInOut(motor2_b)
+
+        # Set motor pins as output
+        self.motor1_a.direction = digitalio.Direction.OUTPUT
+        self.motor1_b.direction = digitalio.Direction.OUTPUT
+        self.motor2_a.direction = digitalio.Direction.OUTPUT
+        self.motor2_b.direction = digitalio.Direction.OUTPUT
         self.time=time.monotonic()
+    def move_forward(self):
+        self.motor1_a.value = True
+        self.motor1_b.value = False
+        self.motor2_a.value = True
+        self.motor2_b.value = False
+
+    def move_backward(self):
+        self.motor1_a.value = False
+        self.motor1_b.value = True
+        self.motor2_a.value = False
+        self.motor2_b.value = True
+
+    def stop_motors(self):
+        self.motor1_a.value = False
+        self.motor1_b.value = False
+        self.motor2_a.value = False
+        self.motor2_b.value = False
     def reset(self):
         """
         reset all motors
@@ -246,7 +277,7 @@ class DexBug:
 
 
 g=DexBug()
-for i in range(100):
+"""for i in range(100):
     print(g.getMPU())
     time.sleep(.1)
-
+#"""
