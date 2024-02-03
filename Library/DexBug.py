@@ -1,7 +1,7 @@
 """
 CircuitPython variant of Dex Bug board
 
-Developed by Dexter R Shepherd
+Developed by Dexter Rio Shepherd
 
 Uses SD card to store data and 5 servo motors, or two DC motors to move around. The library has options to use tactile foot sensors in F1 and F2
 pins which corrospond to the multiplexer binary pins. The board additionally can read input from the inbuilt multiplexer on A27 that providces an extra
