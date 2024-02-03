@@ -95,10 +95,10 @@ class DexBug:
         self.LF=[digitalio.DigitalInOut(board.GP0),digitalio.DigitalInOut(board.GP1),digitalio.DigitalInOut(board.GP2),digitalio.DigitalInOut(board.GP3)]
         for i in range(len(self.LF)): #set mode
             self.LF[i].direction = digitalio.Direction.OUTPUT
-        self.RF=[digitalio.DigitalInOut(board.GP4),digitalio.DigitalInOut(board.GP5),digitalio.DigitalInOut(board.GP6),digitalio.DigitalInOut(board.GP7)]
+        self.RF=[digitalio.DigitalInOut(board.GP8),digitalio.DigitalInOut(board.GP9),digitalio.DigitalInOut(board.GP10),digitalio.DigitalInOut(board.GP11)]
         for i in range(len(self.RF)): #set mode
             self.RF[i].direction = digitalio.Direction.OUTPUT
-        self.AO=[digitalio.DigitalInOut(board.GP4),digitalio.DigitalInOut(board.GP5),digitalio.DigitalInOut(board.GP6)]
+        self.AO=[digitalio.DigitalInOut(board.GP6),digitalio.DigitalInOut(board.GP5),digitalio.DigitalInOut(board.GP4)]
         for i in range(len(self.RF)): #set mode
             self.RF[i].direction = digitalio.Direction.OUTPUT
         self.Lpin = analogio.AnalogIn(board.GP28)
@@ -115,6 +115,21 @@ class DexBug:
         angles=[100,50,170,100]
         for i in range(len(self.servos)):
             self.servos[i].angle=angles[i]
+    def readLight(self):
+        """
+        read the light sensor values
+        @returns (light sensor A, light sensor B)
+        """
+        self.select_channel(0,self.AO)
+        A=self.Opin.value
+        self.select_channel(1,self.AO)
+        B=self.Opin.value
+        return (A,B)
+    def readAnalogue(self,pin):
+        assert pin>2 and pin<=7, "Incorrect pin index"
+        self.select_channel(pin,self.AO)
+        B=self.Opin.value
+        return B
     def move(self,servo,angle,step=2):
         """
         move the servo in a slower way
@@ -125,19 +140,19 @@ class DexBug:
         assert servo>=0 and servo<5,"Incorrect index"
         pulse_width = int((angle / 180.0) * (pca.channels[servo].max_pulse - pca.channels[servo].min_pulse) + pca.channels[servo].min_pulse)
         pca.channels[servo].duty_cycle = pulse_width
-    def getFeet(self,ignore=[]): #get the readings from both feet
-        def select_channel(channel,foot): #select a channel
+    def select_channel(self,channel,foot): #select a channel
             channel=f'{channel:04b}'
             foot[0].value=int(channel[3])
             foot[1].value=int(channel[2])
             foot[2].value=int(channel[1])
             foot[3].value=int(channel[0])
+    def getFeet(self,ignore=[]): #get the readings from both feet 
         a=np.zeros((32,))
         for i in range(16): #loop through sensors on each foot
-            select_channel(i,self.LF)
+            self.select_channel(i,self.LF)
             a[i]=self.Lpin.value
         for i in range(16):
-            select_channel(i,self.RF)
+            self.select_channel(i,self.RF)
             a[16+i]=self.Rpin.value
         return np.array(a)
     def filter(self,array,alpha=0.3):
