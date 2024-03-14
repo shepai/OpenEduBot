@@ -1,4 +1,4 @@
-from EduBot import wheelBot_2
+from EduBot_CP import wheelBot
 import utime
 import board
 from analogio import AnalogIn
