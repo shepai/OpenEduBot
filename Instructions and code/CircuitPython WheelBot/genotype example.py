@@ -1,5 +1,5 @@
 from EduBot_CP import wheelBot
-import utime
+import time
 import board
 from analogio import AnalogIn
 
