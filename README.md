@@ -24,7 +24,7 @@ Wheelbot uses two DC motors and a ball caster at the front. This robot uses a si
 ## Credits
 This project was worked on by University of Sussex students:
 
-Dexter R Sheherd*, https://www.linkedin.com/in/dexter-shepherd-1a4a991b8/
+Dexter R Shepherd*, https://www.linkedin.com/in/dexter-shepherd-1a4a991b8/
 
 Joshua Kybett, https://www.linkedin.com/in/jkybett/
 
