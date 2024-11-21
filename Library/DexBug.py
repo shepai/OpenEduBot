@@ -14,15 +14,14 @@ import board
 import busio
 import busio as io
 import sdcardio
-import adafruit_sdcard
 import storage
 import adafruit_mpu6050
 import adafruit_ht16k33.matrix
 import digitalio
 import analogio
 from audiomp3 import MP3Decoder
-import adafruit_pca9685
-
+from adafruit_servokit import ServoKit
+import pwmio
 
 try:
     from audioio import AudioOut
@@ -40,11 +39,11 @@ class DexBug:
     def __init__(self):
         self.DELAY=0.0001
         self.i2c = io.I2C(board.GP17, board.GP16)
-        self.i2c.try_lock()
-        print("devices",self.i2c.scan())
+        #self.i2c.try_lock()
+        #print("devices",self.i2c.scan())
         #for address in self.i2c.scan():
-        #     print("\tFound device at address: 0x{:02X}".format(address))
-        self.i2c.unlock()
+             #print("\tFound device at address: 0x{:02X}".format(address))
+        #self.i2c.unlock()
         #setup sd card
         spi = busio.SPI(board.GP14, MISO=board.GP12, MOSI=board.GP15)
         cs = board.GP13 #digitalio.DigitalInOut()
@@ -52,8 +51,10 @@ class DexBug:
         self.sd=1
         try:
             sd = sdcardio.SDCard(spi, cs)
+            print("sd object")
             vfs = storage.VfsFat(sd)
             storage.mount(vfs, '/sd')
+            print("mount")
             with open("/sd/test.csv", "w") as f:
                 f.write("")
         except OSError as e:
@@ -89,10 +90,10 @@ class DexBug:
             self.mpu=0
         #setup servos
         try:
-            self.pca = adafruit_pca9685.PCA9685(self.i2c)
-            self.pca.frequency = 50  # Set the PWM frequency (Hz), typical for servos
+            self.servos = ServoKit(channels=16)
         except:
             print("No servo controller")
+            self.servos=0
         #setup feet
         self.LF=[digitalio.DigitalInOut(board.GP0),digitalio.DigitalInOut(board.GP1),digitalio.DigitalInOut(board.GP2),digitalio.DigitalInOut(board.GP3)]
         for i in range(len(self.LF)): #set mode
@@ -108,37 +109,31 @@ class DexBug:
         self.OPin = analogio.AnalogIn(board.GP27)
         #set up dc motors
         motor1_a = board.GP21
-        motor1_b = board.GP20
         motor2_a = board.GP19
+        motor1_b = board.GP20
         motor2_b = board.GP18
-        self.motor1_a = digitalio.DigitalInOut(motor1_a)
-        self.motor1_b = digitalio.DigitalInOut(motor1_b)
-        self.motor2_a = digitalio.DigitalInOut(motor2_a)
-        self.motor2_b = digitalio.DigitalInOut(motor2_b)
+        self.motor1_a = pwmio.PWMOut(motor1_a, frequency=1000)
+        self.motor2_a = pwmio.PWMOut(motor2_a, frequency=1000)
+        self.motor1_b = pwmio.PWMOut(motor1_b, frequency=1000)
+        self.motor2_b = pwmio.PWMOut(motor2_b, frequency=1000)
 
         # Set motor pins as output
-        self.motor1_a.direction = digitalio.Direction.OUTPUT
-        self.motor1_b.direction = digitalio.Direction.OUTPUT
-        self.motor2_a.direction = digitalio.Direction.OUTPUT
-        self.motor2_b.direction = digitalio.Direction.OUTPUT
+        self.motor1_a.duty_cycle = 0
+        self.motor1_b.duty_cycle = 0
+        self.motor2_a.duty_cycle = 0
+        self.motor2_b.duty_cycle = 0
         self.time=time.monotonic()
-    def move_forward(self):
-        self.motor1_a.value = True
-        self.motor1_b.value = False
-        self.motor2_a.value = True
-        self.motor2_b.value = False
-
-    def move_backward(self):
-        self.motor1_a.value = False
-        self.motor1_b.value = True
-        self.motor2_a.value = False
-        self.motor2_b.value = True
+    def move_forward(self,motor1_speed=60,motor2_speed=100):
+        self.motor1_a.duty_cycle = (abs(motor1_speed) * 65535) // 100
+        self.motor2_a.duty_cycle = (abs(motor2_speed) * 65535) // 100
+        self.motor1_b.duty_cycle = 0
+        self.motor2_b.duty_cycle = 0
 
     def stop_motors(self):
-        self.motor1_a.value = False
-        self.motor1_b.value = False
-        self.motor2_a.value = False
-        self.motor2_b.value = False
+        self.motor1_a.duty_cycle = 0
+        self.motor2_a.duty_cycle = 0
+        self.motor1_b.duty_cycle = 0
+        self.motor2_b.duty_cycle = 0
     def reset(self):
         """
         reset all motors
@@ -203,7 +198,7 @@ class DexBug:
         @param servo is the index of the servo
         @param angle is the angle to move to
         """
-        assert servo>=0 and servo<len(self.servos),"Incorrect index"
+        assert servo>=0 and servo<4,"Incorrect index"
         self.servos[servo].angle=angle
     def display_face(self,motion):
         #display the eye
@@ -275,9 +270,7 @@ class DexBug:
             f.write(keys[-1]+"\n")
 
 
+if __name__ == "__main__":
+    g=DexBug()
 
-g=DexBug()
-"""for i in range(100):
-    print(g.getMPU())
-    time.sleep(.1)
-#"""
+
