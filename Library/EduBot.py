@@ -4,7 +4,7 @@ with the aimed intension to be for cheaper robotics use without the need of expe
 
 Code written by:
 
-Dexter R Shepherd, AI student at the University of Sussex
+Dexter Rio Shepherd, AI student at the University of Sussex
     https://www.linkedin.com/in/dexter-shepherd-1a4a991b8/
 
 Debugged by:
