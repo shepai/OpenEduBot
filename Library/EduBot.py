@@ -6,7 +6,6 @@ Code written by:
 
 Dexter R Shepherd, AI student at the University of Sussex
     https://www.linkedin.com/in/dexter-shepherd-1a4a991b8/
-    https://shepai.github.io/
 
 Debugged by:
 
