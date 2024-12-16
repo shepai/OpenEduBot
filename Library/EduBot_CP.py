@@ -6,7 +6,7 @@ This version is for circuit python devices. It was stested using the MakerPi
 
 Code written by:
 
-Dexter R Shepherd, AI student at the University of Sussex
+Dexter Rio Shepherd, AI student at the University of Sussex
     https://www.linkedin.com/in/dexter-shepherd-1a4a991b8/
 
 This code is open source, therefore free to distribute or modify. We only ask to credit original source.
